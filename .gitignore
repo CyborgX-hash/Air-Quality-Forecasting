@@ -42,9 +42,9 @@ env/
 .pytest_cache/
 
 # Large datasets (UCI Beijing Multi-Site Air Quality dataset)
-Data/
-data/
-!data/README.md
+/Data/
+/data/
+!/data/README.md
 
 # Reports and temporary artifacts
 *.log
