@@ -35,11 +35,14 @@ logger = logging.getLogger(__name__)
 class PersistenceBaseline(BaseEstimator):
     """Predict the next hour's PM2.5 using the latest available observation.
 
-    The model memorises the last target value seen during ``fit`` and returns
-    that constant for every row in ``predict``. This serves as a cheap benchmark.
+    If a feature column (e.g. 'PM2.5') is present in X, the model returns
+    that contemporaneous observation (standard 1-step time-series persistence: y_{t+1} = y_t).
+    Otherwise, or if feature_col is None, it memorises the last target value seen during
+    ``fit`` and returns that constant for every row in ``predict``.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, feature_col: str | None = "PM2.5") -> None:
+        self.feature_col = feature_col
         self._last_value: float | None = None
 
     def fit(self, X: pd.DataFrame, y: pd.Series) -> "PersistenceBaseline":
@@ -52,6 +55,12 @@ class PersistenceBaseline(BaseEstimator):
     def predict(self, X: pd.DataFrame) -> np.ndarray:
         if self._last_value is None:
             raise RuntimeError("Model has not been fitted.")
+        if (
+            self.feature_col is not None
+            and isinstance(X, pd.DataFrame)
+            and self.feature_col in X.columns
+        ):
+            return X[self.feature_col].to_numpy(dtype=float)
         return np.full(shape=(len(X),), fill_value=self._last_value, dtype=float)
 
 
@@ -163,16 +172,16 @@ def build_baseline_models(
     """Fit persistence and linear‑regression baselines.
     """
     models: Dict[str, BaseEstimator] = {}
-    models["persistence"] = PersistenceBaseline().fit(X_train, y_train)
+    models["persistence"] = PersistenceBaseline(feature_col="PM2.5").fit(X_train, y_train)
+    models["constant_persistence"] = PersistenceBaseline(feature_col=None).fit(X_train, y_train)
     models["linear_regression"] = LinearRegressionBaseline().fit(X_train, y_train)
     return models
 
 
 def _calc_metrics(y_true: pd.Series, y_pred: np.ndarray) -> Dict[str, float]:
-    mae = float(mean_absolute_error(y_true, y_pred))
-    rmse = float(np.sqrt(mean_squared_error(y_true, y_pred)))
-    r2 = float(r2_score(y_true, y_pred))
-    return {"mae": mae, "rmse": rmse, "r2": r2}
+    from src.evaluate import calculate_metrics
+    m = calculate_metrics(y_true, y_pred)
+    return {"mae": m["mae"], "rmse": m["rmse"], "r2": m["r2"]}
 
 
 def train_models(
