@@ -38,13 +38,21 @@ env/
 .DS_Store
 **/.DS_Store
 
-# pytest cache
+# pytest cache & coverage
 .pytest_cache/
+.coverage
+htmlcov/
 
-# Large datasets (UCI Beijing Multi-Site Air Quality dataset)
-/Data/
-/data/
+# Raw dataset files (keep data/README.md tracked)
+/data/*
 !/data/README.md
 
-# Reports and temporary artifacts
+# Model binaries & large artifacts
+*.pkl
+*.joblib
+*.h5
+
+# Logs & temp files
 *.log
+scratch/
+tmp/
