@@ -129,10 +129,21 @@ python experiments/run_experiments.py --all-stations
 
 | Model | MAE (µg/m³) | RMSE (µg/m³) | R² | MBE (µg/m³) | MAE Improvement vs. Persistence |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **Gradient Boosting (Tuned)** | **10.87** | **17.75** | **0.9575** | -0.73 | **+16.4%** |
-| Gradient Boosting (Default) | 11.23 | 18.27 | 0.9549 | -0.63 | +13.6% |
-| Linear Regression | 11.75 | 19.34 | 0.9495 | -0.58 | +9.6% |
-| **Persistence (Naive Lag-1)** | 13.00 | 21.61 | 0.9370 | +0.02 | 0.0% (Baseline) |
-| Persistence (Constant Mean) | 68.45 | 86.13 | 0.0000 | -12.40 | -426.5% |
+| **Gradient Boosting (Tuned)** | **10.2280** | **19.4863** | **0.9576** | **-0.5699** | **+7.72%** |
+| Gradient Boosting (Default) | 10.6596 | 20.0683 | 0.9550 | -0.5517 | +3.82% |
+| Linear Regression | 10.8088 | 19.5187 | 0.9574 | -0.5931 | +2.47% |
+| **Persistence (Naive Lag-1)** | 11.0831 | 21.0616 | 0.9504 | +0.1254 | 0.0% (Baseline) |
+| Persistence (Constant Mean) | 70.9329 | 113.9054 | -0.4496 | -63.4366 | -540.01% |
 
-For complete error stratification across pollution concentration tiers (e.g. severe smog episodes > 250 µg/m³) and diurnal profiles, see [docs/reproducibility.md](docs/reproducibility.md) and [docs/evaluation_protocol.md](docs/evaluation_protocol.md).
+### 12-Station Network Benchmark Summary (Untouched Test Period, N=58,201 Across 12 Sites)
+
+| Model | Macro MAE (µg/m³) | Pooled MAE (µg/m³) | Macro RMSE (µg/m³) | Pooled RMSE (µg/m³) | Macro R² | Macro MBE (µg/m³) | Macro MAE Imprv. vs Persistence | Inter-Station Std MAE |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Gradient Boosting (Tuned)** | **10.0845** | **10.0863** | **20.1496** | **20.2691** | **0.9522** | **-0.0510** | **+5.92%** | ±0.95 |
+| Gradient Boosting (Default) | 10.2872 | 10.2895 | 20.3508 | 20.4625 | 0.9512 | +0.0257 | +4.02% | ±0.94 |
+| Linear Regression | 10.5147 | 10.5163 | 19.8596 | 19.9479 | 0.9534 | -0.1200 | +1.81% | ±0.88 |
+| **Persistence (Naive Lag-1)** | 10.7237 | 10.7240 | 21.3120 | 21.4066 | 0.9466 | +0.0861 | 0.0% (Baseline) | ±1.01 |
+| Persistence (Constant Mean) | 69.3400 | 69.3241 | 111.4981 | 112.1734 | -0.4509 | -61.6829 | -545.39% | ±8.76 |
+
+For complete station-by-station breakdowns, metadata provenance, and publication figures, see `reports/results/multi_station_sweep/` and `reports/figures/multi_station_sweep/`.
+For error stratification across pollution concentration tiers (e.g. severe smog episodes > 250 µg/m³) and diurnal profiles, see [docs/reproducibility.md](docs/reproducibility.md) and [docs/evaluation_protocol.md](docs/evaluation_protocol.md).

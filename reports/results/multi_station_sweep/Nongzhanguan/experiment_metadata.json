@@ -1,0 +1,589 @@
+{
+  "run_id": "run_20261021_113203_e9cf76",
+  "timestamp": "2026-10-21T11:32:03.490371",
+  "total_elapsed_seconds": 96.03,
+  "experiment_name": "sweep_Nongzhanguan",
+  "environment": {
+    "python_version": "3.12.5",
+    "os_platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "git_commit": "8fca1a7caece0ec4f15c994f8eee9421e6fcba1f",
+    "git_branch": "main",
+    "packages": {
+      "pandas": "3.0.6",
+      "numpy": "2.5.4",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "seaborn": "0.13.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "config": {
+    "experiment_name": "sweep_Nongzhanguan",
+    "data": {
+      "data_dir": "data/raw",
+      "station": "Nongzhanguan",
+      "data_file": null,
+      "target_column": "PM2.5",
+      "timestamp_column": "datetime",
+      "station_column": "station"
+    },
+    "cleaning": {
+      "max_ffill_hours": 6,
+      "encode_wind": true,
+      "fill_remaining_with_median": true
+    },
+    "feature": {
+      "target_col": "PM2.5",
+      "horizon": 1,
+      "new_target_col": "target_pm25",
+      "pm25_lags": [
+        1,
+        2,
+        3,
+        6,
+        12,
+        24
+      ],
+      "pollutant_lags": {
+        "PM10": [
+          1,
+          3,
+          6,
+          24
+        ],
+        "NO2": [
+          1,
+          3,
+          6,
+          24
+        ],
+        "CO": [
+          1,
+          3,
+          6,
+          24
+        ]
+      },
+      "rolling_windows": [
+        3,
+        6,
+        12,
+        24
+      ],
+      "rolling_stats": [
+        "mean",
+        "std"
+      ],
+      "rolling_cols": [
+        "PM2.5",
+        "PM10",
+        "TEMP"
+      ],
+      "include_calendar": true,
+      "include_cyclical": true,
+      "include_domain_weather": true,
+      "include_wind_encoding": true
+    },
+    "split": {
+      "train_ratio": 0.7,
+      "val_ratio": 0.15,
+      "test_ratio": 0.15,
+      "embargo_hours": 0
+    },
+    "model": {
+      "random_seed": 42,
+      "baseline_name": "Persistence (Naive Lag-1)",
+      "models_to_train": [
+        "persistence_naive",
+        "persistence_constant",
+        "linear_regression",
+        "gradient_boosting_default",
+        "gradient_boosting_tuned"
+      ],
+      "gb_default_params": {
+        "n_estimators": 200,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 5,
+        "subsample": 0.8,
+        "random_state": 42
+      },
+      "gb_tuned_params": {
+        "n_estimators": 250,
+        "learning_rate": 0.04,
+        "max_depth": 5,
+        "min_samples_leaf": 8,
+        "subsample": 0.8,
+        "random_state": 42
+      },
+      "tune_gb_grid": false,
+      "gb_tune_param_grid": {
+        "n_estimators": [
+          150,
+          250
+        ],
+        "learning_rate": [
+          0.03,
+          0.05
+        ],
+        "max_depth": [
+          3,
+          5
+        ],
+        "min_samples_leaf": [
+          5,
+          8
+        ]
+      },
+      "scaler_type": null
+    },
+    "output": {
+      "results_dir": "reports/results/multi_station_sweep/Nongzhanguan",
+      "figures_dir": "reports/figures/multi_station_sweep/Nongzhanguan",
+      "metadata_dir": "reports/results/multi_station_sweep/Nongzhanguan",
+      "generate_figures": false
+    }
+  },
+  "dataset": {
+    "source": "/Users/sakshamsontakke/Desktop/Dl-ML Project/data/raw/PRSA_Data_Nongzhanguan_20130301-20170228.csv",
+    "station": "Nongzhanguan",
+    "raw_shape": [
+      35064,
+      19
+    ],
+    "clean_shape": [
+      35064,
+      23
+    ],
+    "target_column": "PM2.5",
+    "future_target_column": "target_pm25",
+    "horizon_hours": 1
+  },
+  "cleaning": {
+    "initial_rows": 35064,
+    "final_rows": 35064,
+    "rows_dropped": 0,
+    "target_col": "PM2.5",
+    "target_missing_count": 628,
+    "target_valid_count": 34436,
+    "target_imputed": false,
+    "max_ffill_hours": 6,
+    "fill_remaining_with_median": true,
+    "feature_imputations": {
+      "PM10": {
+        "initial_missing": 440,
+        "ffill_imputed": 331,
+        "median_imputed": 109,
+        "remaining_missing": 0
+      },
+      "SO2": {
+        "initial_missing": 446,
+        "ffill_imputed": 325,
+        "median_imputed": 121,
+        "remaining_missing": 0
+      },
+      "NO2": {
+        "initial_missing": 692,
+        "ffill_imputed": 453,
+        "median_imputed": 239,
+        "remaining_missing": 0
+      },
+      "CO": {
+        "initial_missing": 1206,
+        "ffill_imputed": 644,
+        "median_imputed": 562,
+        "remaining_missing": 0
+      },
+      "O3": {
+        "initial_missing": 506,
+        "ffill_imputed": 398,
+        "median_imputed": 108,
+        "remaining_missing": 0
+      },
+      "TEMP": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "PRES": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "DEWP": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "RAIN": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "WSPM": {
+        "initial_missing": 14,
+        "ffill_imputed": 14,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "wd": {
+        "initial_missing": 78,
+        "ffill_imputed": 78,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      }
+    }
+  },
+  "features": {
+    "count": 70,
+    "list": [
+      "PM2.5",
+      "PM10",
+      "SO2",
+      "NO2",
+      "CO",
+      "O3",
+      "TEMP",
+      "PRES",
+      "DEWP",
+      "RAIN",
+      "WSPM",
+      "wd_sin",
+      "wd_cos",
+      "wd_deg",
+      "pm25_lag_1h",
+      "pm25_lag_2h",
+      "pm25_lag_3h",
+      "pm25_lag_6h",
+      "pm25_lag_12h",
+      "pm25_lag_24h",
+      "pm10_lag_1h",
+      "pm10_lag_3h",
+      "pm10_lag_6h",
+      "pm10_lag_24h",
+      "no2_lag_1h",
+      "no2_lag_3h",
+      "no2_lag_6h",
+      "no2_lag_24h",
+      "co_lag_1h",
+      "co_lag_3h",
+      "co_lag_6h",
+      "co_lag_24h",
+      "pm25_roll_mean_3h",
+      "pm25_roll_std_3h",
+      "pm25_roll_mean_6h",
+      "pm25_roll_std_6h",
+      "pm25_roll_mean_12h",
+      "pm25_roll_std_12h",
+      "pm25_roll_mean_24h",
+      "pm25_roll_std_24h",
+      "pm10_roll_mean_3h",
+      "pm10_roll_std_3h",
+      "pm10_roll_mean_6h",
+      "pm10_roll_std_6h",
+      "pm10_roll_mean_12h",
+      "pm10_roll_std_12h",
+      "pm10_roll_mean_24h",
+      "pm10_roll_std_24h",
+      "temp_roll_mean_3h",
+      "temp_roll_std_3h",
+      "temp_roll_mean_6h",
+      "temp_roll_std_6h",
+      "temp_roll_mean_12h",
+      "temp_roll_std_12h",
+      "temp_roll_mean_24h",
+      "temp_roll_std_24h",
+      "hour",
+      "day_of_week",
+      "day",
+      "month",
+      "is_weekend",
+      "sin_hour",
+      "cos_hour",
+      "sin_month",
+      "cos_month",
+      "sin_dow",
+      "cos_dow",
+      "temp_dewp_spread",
+      "wind_stagnation",
+      "rain_clearing"
+    ],
+    "metadata": {
+      "target_col": "target_pm25",
+      "horizon_hours": 1,
+      "num_features": 70,
+      "total_records": 35064,
+      "valid_target_records": 34435,
+      "missing_target_records": 629,
+      "feature_columns": [
+        "PM2.5",
+        "PM10",
+        "SO2",
+        "NO2",
+        "CO",
+        "O3",
+        "TEMP",
+        "PRES",
+        "DEWP",
+        "RAIN",
+        "WSPM",
+        "wd_sin",
+        "wd_cos",
+        "wd_deg",
+        "pm25_lag_1h",
+        "pm25_lag_2h",
+        "pm25_lag_3h",
+        "pm25_lag_6h",
+        "pm25_lag_12h",
+        "pm25_lag_24h",
+        "pm10_lag_1h",
+        "pm10_lag_3h",
+        "pm10_lag_6h",
+        "pm10_lag_24h",
+        "no2_lag_1h",
+        "no2_lag_3h",
+        "no2_lag_6h",
+        "no2_lag_24h",
+        "co_lag_1h",
+        "co_lag_3h",
+        "co_lag_6h",
+        "co_lag_24h",
+        "pm25_roll_mean_3h",
+        "pm25_roll_std_3h",
+        "pm25_roll_mean_6h",
+        "pm25_roll_std_6h",
+        "pm25_roll_mean_12h",
+        "pm25_roll_std_12h",
+        "pm25_roll_mean_24h",
+        "pm25_roll_std_24h",
+        "pm10_roll_mean_3h",
+        "pm10_roll_std_3h",
+        "pm10_roll_mean_6h",
+        "pm10_roll_std_6h",
+        "pm10_roll_mean_12h",
+        "pm10_roll_std_12h",
+        "pm10_roll_mean_24h",
+        "pm10_roll_std_24h",
+        "temp_roll_mean_3h",
+        "temp_roll_std_3h",
+        "temp_roll_mean_6h",
+        "temp_roll_std_6h",
+        "temp_roll_mean_12h",
+        "temp_roll_std_12h",
+        "temp_roll_mean_24h",
+        "temp_roll_std_24h",
+        "hour",
+        "day_of_week",
+        "day",
+        "month",
+        "is_weekend",
+        "sin_hour",
+        "cos_hour",
+        "sin_month",
+        "cos_month",
+        "sin_dow",
+        "cos_dow",
+        "temp_dewp_spread",
+        "wind_stagnation",
+        "rain_clearing"
+      ]
+    }
+  },
+  "split": {
+    "total_records": 35064,
+    "train_records": 24544,
+    "val_records": 5260,
+    "test_records": 5260,
+    "embargoed_records": 0,
+    "train_percentage": 70.0,
+    "val_percentage": 15.0,
+    "test_percentage": 15.0,
+    "train_start": "2013-03-01 00:00:00",
+    "train_end": "2015-12-18 15:00:00",
+    "val_start": "2015-12-18 16:00:00",
+    "val_end": "2016-07-24 19:00:00",
+    "test_start": "2016-07-24 20:00:00",
+    "test_end": "2017-02-28 23:00:00",
+    "embargo_hours": 0,
+    "stations": [
+      "Nongzhanguan"
+    ],
+    "records_per_station": {
+      "Nongzhanguan": {
+        "train": 24544,
+        "val": 5260,
+        "test": 5260
+      }
+    }
+  },
+  "leakage_audit": {
+    "passed_all_checks": true,
+    "is_chronological": true,
+    "zero_timestamp_overlap": true,
+    "train_max_timestamp": "2015-12-18 15:00:00",
+    "val_min_timestamp": "2015-12-18 16:00:00",
+    "val_max_timestamp": "2016-07-24 19:00:00",
+    "test_min_timestamp": "2016-07-24 20:00:00",
+    "train_last_target_timestamp": "2015-12-18 16:00:00",
+    "val_last_target_timestamp": "2016-07-24 20:00:00",
+    "train_target_leaks_into_val": false,
+    "val_target_leaks_into_test": false,
+    "overlap_counts": {
+      "train_val": 0,
+      "val_test": 0,
+      "train_test": 0
+    }
+  },
+  "sample_counts": {
+    "train": 22610,
+    "val": 4899,
+    "test": 4835,
+    "total_supervised": 32344
+  },
+  "models": {
+    "trained": [
+      "Persistence (Naive Lag-1)",
+      "Persistence (Constant Mean)",
+      "Linear Regression",
+      "Gradient Boosting (Default)",
+      "Gradient Boosting (Tuned)"
+    ],
+    "training_times_s": {
+      "Persistence (Naive Lag-1)": 0.006790876388549805,
+      "Persistence (Constant Mean)": 1.9073486328125e-05,
+      "Linear Regression": 0.058326005935668945,
+      "Gradient Boosting (Default)": 28.91950011253357,
+      "Gradient Boosting (Tuned)": 65.44033622741699
+    },
+    "selected_champion_model": "Gradient Boosting (Tuned)"
+  },
+  "validation_metrics": [
+    {
+      "model": "Gradient Boosting (Tuned)",
+      "mae": 9.4093,
+      "rmse": 17.0861,
+      "r2": 0.9566,
+      "mbe": -0.4354,
+      "n_obs": 4899,
+      "training_time_s": 65.44,
+      "mae_improvement_pct": 9.04,
+      "rmse_improvement_pct": 10.44,
+      "r2_delta": 0.0107
+    },
+    {
+      "model": "Gradient Boosting (Default)",
+      "mae": 9.6356,
+      "rmse": 17.1656,
+      "r2": 0.9562,
+      "mbe": -0.675,
+      "n_obs": 4899,
+      "training_time_s": 28.92,
+      "mae_improvement_pct": 6.85,
+      "rmse_improvement_pct": 10.03,
+      "r2_delta": 0.0103
+    },
+    {
+      "model": "Linear Regression",
+      "mae": 10.0111,
+      "rmse": 17.3991,
+      "r2": 0.955,
+      "mbe": -0.3339,
+      "n_obs": 4899,
+      "training_time_s": 0.06,
+      "mae_improvement_pct": 3.22,
+      "rmse_improvement_pct": 8.8,
+      "r2_delta": 0.0091
+    },
+    {
+      "model": "Persistence (Naive Lag-1)",
+      "mae": 10.3444,
+      "rmse": 19.0782,
+      "r2": 0.9459,
+      "mbe": 0.0941,
+      "n_obs": 4899,
+      "training_time_s": 0.01,
+      "mae_improvement_pct": 0.0,
+      "rmse_improvement_pct": 0.0,
+      "r2_delta": 0.0
+    },
+    {
+      "model": "Persistence (Constant Mean)",
+      "mae": 57.6216,
+      "rmse": 96.8733,
+      "r2": -0.3961,
+      "mbe": -51.5987,
+      "n_obs": 4899,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": -457.03,
+      "rmse_improvement_pct": -407.77,
+      "r2_delta": -1.342
+    }
+  ],
+  "final_test_metrics": [
+    {
+      "model": "Gradient Boosting (Tuned)",
+      "mae": 10.3369,
+      "rmse": 20.3241,
+      "r2": 0.9577,
+      "mbe": -0.2911,
+      "n_obs": 4835,
+      "training_time_s": 65.44,
+      "mae_improvement_pct": 6.25,
+      "rmse_improvement_pct": 4.88,
+      "r2_delta": 0.0045
+    },
+    {
+      "model": "Gradient Boosting (Default)",
+      "mae": 10.6564,
+      "rmse": 20.4517,
+      "r2": 0.9571,
+      "mbe": 0.0056,
+      "n_obs": 4835,
+      "training_time_s": 28.92,
+      "mae_improvement_pct": 3.36,
+      "rmse_improvement_pct": 4.28,
+      "r2_delta": 0.0039
+    },
+    {
+      "model": "Linear Regression",
+      "mae": 10.8819,
+      "rmse": 19.985,
+      "r2": 0.9591,
+      "mbe": -0.2327,
+      "n_obs": 4835,
+      "training_time_s": 0.06,
+      "mae_improvement_pct": 1.31,
+      "rmse_improvement_pct": 6.46,
+      "r2_delta": 0.0059
+    },
+    {
+      "model": "Persistence (Naive Lag-1)",
+      "mae": 11.0265,
+      "rmse": 21.3657,
+      "r2": 0.9532,
+      "mbe": 0.1049,
+      "n_obs": 4835,
+      "training_time_s": 0.01,
+      "mae_improvement_pct": 0.0,
+      "rmse_improvement_pct": 0.0,
+      "r2_delta": 0.0
+    },
+    {
+      "model": "Persistence (Constant Mean)",
+      "mae": 75.8091,
+      "rmse": 120.7158,
+      "r2": -0.4939,
+      "mbe": -69.4099,
+      "n_obs": 4835,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": -587.52,
+      "rmse_improvement_pct": -465.0,
+      "r2_delta": -1.4471
+    }
+  ]
+}

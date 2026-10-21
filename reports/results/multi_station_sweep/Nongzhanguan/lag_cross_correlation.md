@@ -1,0 +1,13 @@
+|   lag_hours |   pearson_correlation | interpretation                                  |
+|------------:|----------------------:|:------------------------------------------------|
+|          -5 |                0.8222 | Pred(t) vs Actual(t - 5h) [Lag-5 memory]        |
+|          -4 |                0.8648 | Pred(t) vs Actual(t - 4h) [Lag-4 memory]        |
+|          -3 |                0.9065 | Pred(t) vs Actual(t - 3h) [Lag-3 memory]        |
+|          -2 |                0.9502 | Pred(t) vs Actual(t - 2h) [Lag-2 memory]        |
+|          -1 |                0.9877 | Pred(t) vs Actual(t - 1h) [Lag-1 memory]        |
+|           0 |                0.9788 | Pred(t) vs Actual(t) [Target synchronous]       |
+|           1 |                0.9415 | Pred(t) vs Actual(t + 1h) [Lead-1 anticipation] |
+|           2 |                0.9    | Pred(t) vs Actual(t + 2h) [Lead-2 anticipation] |
+|           3 |                0.8576 | Pred(t) vs Actual(t + 3h) [Lead-3 anticipation] |
+|           4 |                0.8162 | Pred(t) vs Actual(t + 4h) [Lead-4 anticipation] |
+|           5 |                0.7761 | Pred(t) vs Actual(t + 5h) [Lead-5 anticipation] |

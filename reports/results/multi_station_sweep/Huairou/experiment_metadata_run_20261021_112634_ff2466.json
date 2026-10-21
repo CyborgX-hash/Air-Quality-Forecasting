@@ -1,0 +1,589 @@
+{
+  "run_id": "run_20261021_112634_ff2466",
+  "timestamp": "2026-10-21T11:26:34.227131",
+  "total_elapsed_seconds": 80.24,
+  "experiment_name": "sweep_Huairou",
+  "environment": {
+    "python_version": "3.12.5",
+    "os_platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "git_commit": "8fca1a7caece0ec4f15c994f8eee9421e6fcba1f",
+    "git_branch": "main",
+    "packages": {
+      "pandas": "3.0.6",
+      "numpy": "2.5.4",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "seaborn": "0.13.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "config": {
+    "experiment_name": "sweep_Huairou",
+    "data": {
+      "data_dir": "data/raw",
+      "station": "Huairou",
+      "data_file": null,
+      "target_column": "PM2.5",
+      "timestamp_column": "datetime",
+      "station_column": "station"
+    },
+    "cleaning": {
+      "max_ffill_hours": 6,
+      "encode_wind": true,
+      "fill_remaining_with_median": true
+    },
+    "feature": {
+      "target_col": "PM2.5",
+      "horizon": 1,
+      "new_target_col": "target_pm25",
+      "pm25_lags": [
+        1,
+        2,
+        3,
+        6,
+        12,
+        24
+      ],
+      "pollutant_lags": {
+        "PM10": [
+          1,
+          3,
+          6,
+          24
+        ],
+        "NO2": [
+          1,
+          3,
+          6,
+          24
+        ],
+        "CO": [
+          1,
+          3,
+          6,
+          24
+        ]
+      },
+      "rolling_windows": [
+        3,
+        6,
+        12,
+        24
+      ],
+      "rolling_stats": [
+        "mean",
+        "std"
+      ],
+      "rolling_cols": [
+        "PM2.5",
+        "PM10",
+        "TEMP"
+      ],
+      "include_calendar": true,
+      "include_cyclical": true,
+      "include_domain_weather": true,
+      "include_wind_encoding": true
+    },
+    "split": {
+      "train_ratio": 0.7,
+      "val_ratio": 0.15,
+      "test_ratio": 0.15,
+      "embargo_hours": 0
+    },
+    "model": {
+      "random_seed": 42,
+      "baseline_name": "Persistence (Naive Lag-1)",
+      "models_to_train": [
+        "persistence_naive",
+        "persistence_constant",
+        "linear_regression",
+        "gradient_boosting_default",
+        "gradient_boosting_tuned"
+      ],
+      "gb_default_params": {
+        "n_estimators": 200,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 5,
+        "subsample": 0.8,
+        "random_state": 42
+      },
+      "gb_tuned_params": {
+        "n_estimators": 250,
+        "learning_rate": 0.04,
+        "max_depth": 5,
+        "min_samples_leaf": 8,
+        "subsample": 0.8,
+        "random_state": 42
+      },
+      "tune_gb_grid": false,
+      "gb_tune_param_grid": {
+        "n_estimators": [
+          150,
+          250
+        ],
+        "learning_rate": [
+          0.03,
+          0.05
+        ],
+        "max_depth": [
+          3,
+          5
+        ],
+        "min_samples_leaf": [
+          5,
+          8
+        ]
+      },
+      "scaler_type": null
+    },
+    "output": {
+      "results_dir": "reports/results/multi_station_sweep/Huairou",
+      "figures_dir": "reports/figures/multi_station_sweep/Huairou",
+      "metadata_dir": "reports/results/multi_station_sweep/Huairou",
+      "generate_figures": false
+    }
+  },
+  "dataset": {
+    "source": "/Users/sakshamsontakke/Desktop/Dl-ML Project/data/raw/PRSA_Data_Huairou_20130301-20170228.csv",
+    "station": "Huairou",
+    "raw_shape": [
+      35064,
+      19
+    ],
+    "clean_shape": [
+      35064,
+      23
+    ],
+    "target_column": "PM2.5",
+    "future_target_column": "target_pm25",
+    "horizon_hours": 1
+  },
+  "cleaning": {
+    "initial_rows": 35064,
+    "final_rows": 35064,
+    "rows_dropped": 0,
+    "target_col": "PM2.5",
+    "target_missing_count": 953,
+    "target_valid_count": 34111,
+    "target_imputed": false,
+    "max_ffill_hours": 6,
+    "fill_remaining_with_median": true,
+    "feature_imputations": {
+      "PM10": {
+        "initial_missing": 777,
+        "ffill_imputed": 348,
+        "median_imputed": 429,
+        "remaining_missing": 0
+      },
+      "SO2": {
+        "initial_missing": 980,
+        "ffill_imputed": 513,
+        "median_imputed": 467,
+        "remaining_missing": 0
+      },
+      "NO2": {
+        "initial_missing": 1639,
+        "ffill_imputed": 1067,
+        "median_imputed": 572,
+        "remaining_missing": 0
+      },
+      "CO": {
+        "initial_missing": 1422,
+        "ffill_imputed": 817,
+        "median_imputed": 605,
+        "remaining_missing": 0
+      },
+      "O3": {
+        "initial_missing": 1151,
+        "ffill_imputed": 649,
+        "median_imputed": 502,
+        "remaining_missing": 0
+      },
+      "TEMP": {
+        "initial_missing": 51,
+        "ffill_imputed": 51,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "PRES": {
+        "initial_missing": 53,
+        "ffill_imputed": 53,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "DEWP": {
+        "initial_missing": 53,
+        "ffill_imputed": 53,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "RAIN": {
+        "initial_missing": 55,
+        "ffill_imputed": 55,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "WSPM": {
+        "initial_missing": 49,
+        "ffill_imputed": 49,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "wd": {
+        "initial_missing": 302,
+        "ffill_imputed": 295,
+        "median_imputed": 7,
+        "remaining_missing": 0
+      }
+    }
+  },
+  "features": {
+    "count": 70,
+    "list": [
+      "PM2.5",
+      "PM10",
+      "SO2",
+      "NO2",
+      "CO",
+      "O3",
+      "TEMP",
+      "PRES",
+      "DEWP",
+      "RAIN",
+      "WSPM",
+      "wd_sin",
+      "wd_cos",
+      "wd_deg",
+      "pm25_lag_1h",
+      "pm25_lag_2h",
+      "pm25_lag_3h",
+      "pm25_lag_6h",
+      "pm25_lag_12h",
+      "pm25_lag_24h",
+      "pm10_lag_1h",
+      "pm10_lag_3h",
+      "pm10_lag_6h",
+      "pm10_lag_24h",
+      "no2_lag_1h",
+      "no2_lag_3h",
+      "no2_lag_6h",
+      "no2_lag_24h",
+      "co_lag_1h",
+      "co_lag_3h",
+      "co_lag_6h",
+      "co_lag_24h",
+      "pm25_roll_mean_3h",
+      "pm25_roll_std_3h",
+      "pm25_roll_mean_6h",
+      "pm25_roll_std_6h",
+      "pm25_roll_mean_12h",
+      "pm25_roll_std_12h",
+      "pm25_roll_mean_24h",
+      "pm25_roll_std_24h",
+      "pm10_roll_mean_3h",
+      "pm10_roll_std_3h",
+      "pm10_roll_mean_6h",
+      "pm10_roll_std_6h",
+      "pm10_roll_mean_12h",
+      "pm10_roll_std_12h",
+      "pm10_roll_mean_24h",
+      "pm10_roll_std_24h",
+      "temp_roll_mean_3h",
+      "temp_roll_std_3h",
+      "temp_roll_mean_6h",
+      "temp_roll_std_6h",
+      "temp_roll_mean_12h",
+      "temp_roll_std_12h",
+      "temp_roll_mean_24h",
+      "temp_roll_std_24h",
+      "hour",
+      "day_of_week",
+      "day",
+      "month",
+      "is_weekend",
+      "sin_hour",
+      "cos_hour",
+      "sin_month",
+      "cos_month",
+      "sin_dow",
+      "cos_dow",
+      "temp_dewp_spread",
+      "wind_stagnation",
+      "rain_clearing"
+    ],
+    "metadata": {
+      "target_col": "target_pm25",
+      "horizon_hours": 1,
+      "num_features": 70,
+      "total_records": 35064,
+      "valid_target_records": 34110,
+      "missing_target_records": 954,
+      "feature_columns": [
+        "PM2.5",
+        "PM10",
+        "SO2",
+        "NO2",
+        "CO",
+        "O3",
+        "TEMP",
+        "PRES",
+        "DEWP",
+        "RAIN",
+        "WSPM",
+        "wd_sin",
+        "wd_cos",
+        "wd_deg",
+        "pm25_lag_1h",
+        "pm25_lag_2h",
+        "pm25_lag_3h",
+        "pm25_lag_6h",
+        "pm25_lag_12h",
+        "pm25_lag_24h",
+        "pm10_lag_1h",
+        "pm10_lag_3h",
+        "pm10_lag_6h",
+        "pm10_lag_24h",
+        "no2_lag_1h",
+        "no2_lag_3h",
+        "no2_lag_6h",
+        "no2_lag_24h",
+        "co_lag_1h",
+        "co_lag_3h",
+        "co_lag_6h",
+        "co_lag_24h",
+        "pm25_roll_mean_3h",
+        "pm25_roll_std_3h",
+        "pm25_roll_mean_6h",
+        "pm25_roll_std_6h",
+        "pm25_roll_mean_12h",
+        "pm25_roll_std_12h",
+        "pm25_roll_mean_24h",
+        "pm25_roll_std_24h",
+        "pm10_roll_mean_3h",
+        "pm10_roll_std_3h",
+        "pm10_roll_mean_6h",
+        "pm10_roll_std_6h",
+        "pm10_roll_mean_12h",
+        "pm10_roll_std_12h",
+        "pm10_roll_mean_24h",
+        "pm10_roll_std_24h",
+        "temp_roll_mean_3h",
+        "temp_roll_std_3h",
+        "temp_roll_mean_6h",
+        "temp_roll_std_6h",
+        "temp_roll_mean_12h",
+        "temp_roll_std_12h",
+        "temp_roll_mean_24h",
+        "temp_roll_std_24h",
+        "hour",
+        "day_of_week",
+        "day",
+        "month",
+        "is_weekend",
+        "sin_hour",
+        "cos_hour",
+        "sin_month",
+        "cos_month",
+        "sin_dow",
+        "cos_dow",
+        "temp_dewp_spread",
+        "wind_stagnation",
+        "rain_clearing"
+      ]
+    }
+  },
+  "split": {
+    "total_records": 35064,
+    "train_records": 24544,
+    "val_records": 5260,
+    "test_records": 5260,
+    "embargoed_records": 0,
+    "train_percentage": 70.0,
+    "val_percentage": 15.0,
+    "test_percentage": 15.0,
+    "train_start": "2013-03-01 00:00:00",
+    "train_end": "2015-12-18 15:00:00",
+    "val_start": "2015-12-18 16:00:00",
+    "val_end": "2016-07-24 19:00:00",
+    "test_start": "2016-07-24 20:00:00",
+    "test_end": "2017-02-28 23:00:00",
+    "embargo_hours": 0,
+    "stations": [
+      "Huairou"
+    ],
+    "records_per_station": {
+      "Huairou": {
+        "train": 24544,
+        "val": 5260,
+        "test": 5260
+      }
+    }
+  },
+  "leakage_audit": {
+    "passed_all_checks": true,
+    "is_chronological": true,
+    "zero_timestamp_overlap": true,
+    "train_max_timestamp": "2015-12-18 15:00:00",
+    "val_min_timestamp": "2015-12-18 16:00:00",
+    "val_max_timestamp": "2016-07-24 19:00:00",
+    "test_min_timestamp": "2016-07-24 20:00:00",
+    "train_last_target_timestamp": "2015-12-18 16:00:00",
+    "val_last_target_timestamp": "2016-07-24 20:00:00",
+    "train_target_leaks_into_val": false,
+    "val_target_leaks_into_test": false,
+    "overlap_counts": {
+      "train_val": 0,
+      "val_test": 0,
+      "train_test": 0
+    }
+  },
+  "sample_counts": {
+    "train": 22218,
+    "val": 4774,
+    "test": 4899,
+    "total_supervised": 31891
+  },
+  "models": {
+    "trained": [
+      "Persistence (Naive Lag-1)",
+      "Persistence (Constant Mean)",
+      "Linear Regression",
+      "Gradient Boosting (Default)",
+      "Gradient Boosting (Tuned)"
+    ],
+    "training_times_s": {
+      "Persistence (Naive Lag-1)": 3.7670135498046875e-05,
+      "Persistence (Constant Mean)": 5.245208740234375e-06,
+      "Linear Regression": 0.02698969841003418,
+      "Gradient Boosting (Default)": 26.980615854263306,
+      "Gradient Boosting (Tuned)": 52.55569791793823
+    },
+    "selected_champion_model": "Gradient Boosting (Tuned)"
+  },
+  "validation_metrics": [
+    {
+      "model": "Gradient Boosting (Tuned)",
+      "mae": 8.2746,
+      "rmse": 17.6227,
+      "r2": 0.9345,
+      "mbe": -0.3876,
+      "n_obs": 4774,
+      "training_time_s": 52.56,
+      "mae_improvement_pct": 7.13,
+      "rmse_improvement_pct": 6.75,
+      "r2_delta": 0.0098
+    },
+    {
+      "model": "Gradient Boosting (Default)",
+      "mae": 8.4991,
+      "rmse": 17.7069,
+      "r2": 0.9339,
+      "mbe": -0.3648,
+      "n_obs": 4774,
+      "training_time_s": 26.98,
+      "mae_improvement_pct": 4.61,
+      "rmse_improvement_pct": 6.31,
+      "r2_delta": 0.0092
+    },
+    {
+      "model": "Linear Regression",
+      "mae": 8.8488,
+      "rmse": 18.052,
+      "r2": 0.9313,
+      "mbe": 0.2205,
+      "n_obs": 4774,
+      "training_time_s": 0.03,
+      "mae_improvement_pct": 0.68,
+      "rmse_improvement_pct": 4.48,
+      "r2_delta": 0.0066
+    },
+    {
+      "model": "Persistence (Naive Lag-1)",
+      "mae": 8.9095,
+      "rmse": 18.8992,
+      "r2": 0.9247,
+      "mbe": 0.1219,
+      "n_obs": 4774,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": 0.0,
+      "rmse_improvement_pct": 0.0,
+      "r2_delta": 0.0
+    },
+    {
+      "model": "Persistence (Constant Mean)",
+      "mae": 50.3695,
+      "rmse": 83.8701,
+      "r2": -0.4827,
+      "mbe": -47.853,
+      "n_obs": 4774,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": -465.35,
+      "rmse_improvement_pct": -343.78,
+      "r2_delta": -1.4074
+    }
+  ],
+  "final_test_metrics": [
+    {
+      "model": "Gradient Boosting (Tuned)",
+      "mae": 8.4206,
+      "rmse": 18.9275,
+      "r2": 0.9399,
+      "mbe": 0.37,
+      "n_obs": 4899,
+      "training_time_s": 52.56,
+      "mae_improvement_pct": 5.18,
+      "rmse_improvement_pct": 4.14,
+      "r2_delta": 0.0053
+    },
+    {
+      "model": "Gradient Boosting (Default)",
+      "mae": 8.5448,
+      "rmse": 18.8265,
+      "r2": 0.9405,
+      "mbe": 0.1588,
+      "n_obs": 4899,
+      "training_time_s": 26.98,
+      "mae_improvement_pct": 3.78,
+      "rmse_improvement_pct": 4.65,
+      "r2_delta": 0.0059
+    },
+    {
+      "model": "Linear Regression",
+      "mae": 8.8278,
+      "rmse": 18.7994,
+      "r2": 0.9407,
+      "mbe": 0.3572,
+      "n_obs": 4899,
+      "training_time_s": 0.03,
+      "mae_improvement_pct": 0.59,
+      "rmse_improvement_pct": 4.79,
+      "r2_delta": 0.0061
+    },
+    {
+      "model": "Persistence (Naive Lag-1)",
+      "mae": 8.8804,
+      "rmse": 19.7443,
+      "r2": 0.9346,
+      "mbe": 0.0508,
+      "n_obs": 4899,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": 0.0,
+      "rmse_improvement_pct": 0.0,
+      "r2_delta": 0.0
+    },
+    {
+      "model": "Persistence (Constant Mean)",
+      "mae": 58.7006,
+      "rmse": 95.2576,
+      "r2": -0.5221,
+      "mbe": -55.7902,
+      "n_obs": 4899,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": -561.01,
+      "rmse_improvement_pct": -382.46,
+      "r2_delta": -1.4567
+    }
+  ]
+}

@@ -1,0 +1,589 @@
+{
+  "run_id": "run_20261021_112758_885790",
+  "timestamp": "2026-10-21T11:27:58.249847",
+  "total_elapsed_seconds": 88.29,
+  "experiment_name": "sweep_Tiantan",
+  "environment": {
+    "python_version": "3.12.5",
+    "os_platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "git_commit": "8fca1a7caece0ec4f15c994f8eee9421e6fcba1f",
+    "git_branch": "main",
+    "packages": {
+      "pandas": "3.0.6",
+      "numpy": "2.5.4",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "seaborn": "0.13.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "config": {
+    "experiment_name": "sweep_Tiantan",
+    "data": {
+      "data_dir": "data/raw",
+      "station": "Tiantan",
+      "data_file": null,
+      "target_column": "PM2.5",
+      "timestamp_column": "datetime",
+      "station_column": "station"
+    },
+    "cleaning": {
+      "max_ffill_hours": 6,
+      "encode_wind": true,
+      "fill_remaining_with_median": true
+    },
+    "feature": {
+      "target_col": "PM2.5",
+      "horizon": 1,
+      "new_target_col": "target_pm25",
+      "pm25_lags": [
+        1,
+        2,
+        3,
+        6,
+        12,
+        24
+      ],
+      "pollutant_lags": {
+        "PM10": [
+          1,
+          3,
+          6,
+          24
+        ],
+        "NO2": [
+          1,
+          3,
+          6,
+          24
+        ],
+        "CO": [
+          1,
+          3,
+          6,
+          24
+        ]
+      },
+      "rolling_windows": [
+        3,
+        6,
+        12,
+        24
+      ],
+      "rolling_stats": [
+        "mean",
+        "std"
+      ],
+      "rolling_cols": [
+        "PM2.5",
+        "PM10",
+        "TEMP"
+      ],
+      "include_calendar": true,
+      "include_cyclical": true,
+      "include_domain_weather": true,
+      "include_wind_encoding": true
+    },
+    "split": {
+      "train_ratio": 0.7,
+      "val_ratio": 0.15,
+      "test_ratio": 0.15,
+      "embargo_hours": 0
+    },
+    "model": {
+      "random_seed": 42,
+      "baseline_name": "Persistence (Naive Lag-1)",
+      "models_to_train": [
+        "persistence_naive",
+        "persistence_constant",
+        "linear_regression",
+        "gradient_boosting_default",
+        "gradient_boosting_tuned"
+      ],
+      "gb_default_params": {
+        "n_estimators": 200,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 5,
+        "subsample": 0.8,
+        "random_state": 42
+      },
+      "gb_tuned_params": {
+        "n_estimators": 250,
+        "learning_rate": 0.04,
+        "max_depth": 5,
+        "min_samples_leaf": 8,
+        "subsample": 0.8,
+        "random_state": 42
+      },
+      "tune_gb_grid": false,
+      "gb_tune_param_grid": {
+        "n_estimators": [
+          150,
+          250
+        ],
+        "learning_rate": [
+          0.03,
+          0.05
+        ],
+        "max_depth": [
+          3,
+          5
+        ],
+        "min_samples_leaf": [
+          5,
+          8
+        ]
+      },
+      "scaler_type": null
+    },
+    "output": {
+      "results_dir": "reports/results/multi_station_sweep/Tiantan",
+      "figures_dir": "reports/figures/multi_station_sweep/Tiantan",
+      "metadata_dir": "reports/results/multi_station_sweep/Tiantan",
+      "generate_figures": false
+    }
+  },
+  "dataset": {
+    "source": "/Users/sakshamsontakke/Desktop/Dl-ML Project/data/raw/PRSA_Data_Tiantan_20130301-20170228.csv",
+    "station": "Tiantan",
+    "raw_shape": [
+      35064,
+      19
+    ],
+    "clean_shape": [
+      35064,
+      23
+    ],
+    "target_column": "PM2.5",
+    "future_target_column": "target_pm25",
+    "horizon_hours": 1
+  },
+  "cleaning": {
+    "initial_rows": 35064,
+    "final_rows": 35064,
+    "rows_dropped": 0,
+    "target_col": "PM2.5",
+    "target_missing_count": 677,
+    "target_valid_count": 34387,
+    "target_imputed": false,
+    "max_ffill_hours": 6,
+    "fill_remaining_with_median": true,
+    "feature_imputations": {
+      "PM10": {
+        "initial_missing": 597,
+        "ffill_imputed": 527,
+        "median_imputed": 70,
+        "remaining_missing": 0
+      },
+      "SO2": {
+        "initial_missing": 1118,
+        "ffill_imputed": 497,
+        "median_imputed": 621,
+        "remaining_missing": 0
+      },
+      "NO2": {
+        "initial_missing": 744,
+        "ffill_imputed": 575,
+        "median_imputed": 169,
+        "remaining_missing": 0
+      },
+      "CO": {
+        "initial_missing": 1126,
+        "ffill_imputed": 780,
+        "median_imputed": 346,
+        "remaining_missing": 0
+      },
+      "O3": {
+        "initial_missing": 843,
+        "ffill_imputed": 638,
+        "median_imputed": 205,
+        "remaining_missing": 0
+      },
+      "TEMP": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "PRES": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "DEWP": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "RAIN": {
+        "initial_missing": 20,
+        "ffill_imputed": 20,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "WSPM": {
+        "initial_missing": 14,
+        "ffill_imputed": 14,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      },
+      "wd": {
+        "initial_missing": 78,
+        "ffill_imputed": 78,
+        "median_imputed": 0,
+        "remaining_missing": 0
+      }
+    }
+  },
+  "features": {
+    "count": 70,
+    "list": [
+      "PM2.5",
+      "PM10",
+      "SO2",
+      "NO2",
+      "CO",
+      "O3",
+      "TEMP",
+      "PRES",
+      "DEWP",
+      "RAIN",
+      "WSPM",
+      "wd_sin",
+      "wd_cos",
+      "wd_deg",
+      "pm25_lag_1h",
+      "pm25_lag_2h",
+      "pm25_lag_3h",
+      "pm25_lag_6h",
+      "pm25_lag_12h",
+      "pm25_lag_24h",
+      "pm10_lag_1h",
+      "pm10_lag_3h",
+      "pm10_lag_6h",
+      "pm10_lag_24h",
+      "no2_lag_1h",
+      "no2_lag_3h",
+      "no2_lag_6h",
+      "no2_lag_24h",
+      "co_lag_1h",
+      "co_lag_3h",
+      "co_lag_6h",
+      "co_lag_24h",
+      "pm25_roll_mean_3h",
+      "pm25_roll_std_3h",
+      "pm25_roll_mean_6h",
+      "pm25_roll_std_6h",
+      "pm25_roll_mean_12h",
+      "pm25_roll_std_12h",
+      "pm25_roll_mean_24h",
+      "pm25_roll_std_24h",
+      "pm10_roll_mean_3h",
+      "pm10_roll_std_3h",
+      "pm10_roll_mean_6h",
+      "pm10_roll_std_6h",
+      "pm10_roll_mean_12h",
+      "pm10_roll_std_12h",
+      "pm10_roll_mean_24h",
+      "pm10_roll_std_24h",
+      "temp_roll_mean_3h",
+      "temp_roll_std_3h",
+      "temp_roll_mean_6h",
+      "temp_roll_std_6h",
+      "temp_roll_mean_12h",
+      "temp_roll_std_12h",
+      "temp_roll_mean_24h",
+      "temp_roll_std_24h",
+      "hour",
+      "day_of_week",
+      "day",
+      "month",
+      "is_weekend",
+      "sin_hour",
+      "cos_hour",
+      "sin_month",
+      "cos_month",
+      "sin_dow",
+      "cos_dow",
+      "temp_dewp_spread",
+      "wind_stagnation",
+      "rain_clearing"
+    ],
+    "metadata": {
+      "target_col": "target_pm25",
+      "horizon_hours": 1,
+      "num_features": 70,
+      "total_records": 35064,
+      "valid_target_records": 34386,
+      "missing_target_records": 678,
+      "feature_columns": [
+        "PM2.5",
+        "PM10",
+        "SO2",
+        "NO2",
+        "CO",
+        "O3",
+        "TEMP",
+        "PRES",
+        "DEWP",
+        "RAIN",
+        "WSPM",
+        "wd_sin",
+        "wd_cos",
+        "wd_deg",
+        "pm25_lag_1h",
+        "pm25_lag_2h",
+        "pm25_lag_3h",
+        "pm25_lag_6h",
+        "pm25_lag_12h",
+        "pm25_lag_24h",
+        "pm10_lag_1h",
+        "pm10_lag_3h",
+        "pm10_lag_6h",
+        "pm10_lag_24h",
+        "no2_lag_1h",
+        "no2_lag_3h",
+        "no2_lag_6h",
+        "no2_lag_24h",
+        "co_lag_1h",
+        "co_lag_3h",
+        "co_lag_6h",
+        "co_lag_24h",
+        "pm25_roll_mean_3h",
+        "pm25_roll_std_3h",
+        "pm25_roll_mean_6h",
+        "pm25_roll_std_6h",
+        "pm25_roll_mean_12h",
+        "pm25_roll_std_12h",
+        "pm25_roll_mean_24h",
+        "pm25_roll_std_24h",
+        "pm10_roll_mean_3h",
+        "pm10_roll_std_3h",
+        "pm10_roll_mean_6h",
+        "pm10_roll_std_6h",
+        "pm10_roll_mean_12h",
+        "pm10_roll_std_12h",
+        "pm10_roll_mean_24h",
+        "pm10_roll_std_24h",
+        "temp_roll_mean_3h",
+        "temp_roll_std_3h",
+        "temp_roll_mean_6h",
+        "temp_roll_std_6h",
+        "temp_roll_mean_12h",
+        "temp_roll_std_12h",
+        "temp_roll_mean_24h",
+        "temp_roll_std_24h",
+        "hour",
+        "day_of_week",
+        "day",
+        "month",
+        "is_weekend",
+        "sin_hour",
+        "cos_hour",
+        "sin_month",
+        "cos_month",
+        "sin_dow",
+        "cos_dow",
+        "temp_dewp_spread",
+        "wind_stagnation",
+        "rain_clearing"
+      ]
+    }
+  },
+  "split": {
+    "total_records": 35064,
+    "train_records": 24544,
+    "val_records": 5260,
+    "test_records": 5260,
+    "embargoed_records": 0,
+    "train_percentage": 70.0,
+    "val_percentage": 15.0,
+    "test_percentage": 15.0,
+    "train_start": "2013-03-01 00:00:00",
+    "train_end": "2015-12-18 15:00:00",
+    "val_start": "2015-12-18 16:00:00",
+    "val_end": "2016-07-24 19:00:00",
+    "test_start": "2016-07-24 20:00:00",
+    "test_end": "2017-02-28 23:00:00",
+    "embargo_hours": 0,
+    "stations": [
+      "Tiantan"
+    ],
+    "records_per_station": {
+      "Tiantan": {
+        "train": 24544,
+        "val": 5260,
+        "test": 5260
+      }
+    }
+  },
+  "leakage_audit": {
+    "passed_all_checks": true,
+    "is_chronological": true,
+    "zero_timestamp_overlap": true,
+    "train_max_timestamp": "2015-12-18 15:00:00",
+    "val_min_timestamp": "2015-12-18 16:00:00",
+    "val_max_timestamp": "2016-07-24 19:00:00",
+    "test_min_timestamp": "2016-07-24 20:00:00",
+    "train_last_target_timestamp": "2015-12-18 16:00:00",
+    "val_last_target_timestamp": "2016-07-24 20:00:00",
+    "train_target_leaks_into_val": false,
+    "val_target_leaks_into_test": false,
+    "overlap_counts": {
+      "train_val": 0,
+      "val_test": 0,
+      "train_test": 0
+    }
+  },
+  "sample_counts": {
+    "train": 22399,
+    "val": 4898,
+    "test": 4903,
+    "total_supervised": 32200
+  },
+  "models": {
+    "trained": [
+      "Persistence (Naive Lag-1)",
+      "Persistence (Constant Mean)",
+      "Linear Regression",
+      "Gradient Boosting (Default)",
+      "Gradient Boosting (Tuned)"
+    ],
+    "training_times_s": {
+      "Persistence (Naive Lag-1)": 0.00017499923706054688,
+      "Persistence (Constant Mean)": 4.0531158447265625e-06,
+      "Linear Regression": 0.03856015205383301,
+      "Gradient Boosting (Default)": 34.466641902923584,
+      "Gradient Boosting (Tuned)": 52.990012884140015
+    },
+    "selected_champion_model": "Gradient Boosting (Tuned)"
+  },
+  "validation_metrics": [
+    {
+      "model": "Gradient Boosting (Tuned)",
+      "mae": 9.4831,
+      "rmse": 17.4165,
+      "r2": 0.9551,
+      "mbe": 0.013,
+      "n_obs": 4898,
+      "training_time_s": 52.99,
+      "mae_improvement_pct": 7.36,
+      "rmse_improvement_pct": 7.95,
+      "r2_delta": 0.008
+    },
+    {
+      "model": "Gradient Boosting (Default)",
+      "mae": 9.7894,
+      "rmse": 17.8737,
+      "r2": 0.9528,
+      "mbe": -0.4185,
+      "n_obs": 4898,
+      "training_time_s": 34.47,
+      "mae_improvement_pct": 4.37,
+      "rmse_improvement_pct": 5.53,
+      "r2_delta": 0.0057
+    },
+    {
+      "model": "Linear Regression",
+      "mae": 9.8989,
+      "rmse": 16.9751,
+      "r2": 0.9574,
+      "mbe": 0.1223,
+      "n_obs": 4898,
+      "training_time_s": 0.04,
+      "mae_improvement_pct": 3.3,
+      "rmse_improvement_pct": 10.28,
+      "r2_delta": 0.0103
+    },
+    {
+      "model": "Persistence (Naive Lag-1)",
+      "mae": 10.237,
+      "rmse": 18.9198,
+      "r2": 0.9471,
+      "mbe": 0.0104,
+      "n_obs": 4898,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": 0.0,
+      "rmse_improvement_pct": 0.0,
+      "r2_delta": 0.0
+    },
+    {
+      "model": "Persistence (Constant Mean)",
+      "mae": 56.9051,
+      "rmse": 96.4712,
+      "r2": -0.3762,
+      "mbe": -50.4396,
+      "n_obs": 4898,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": -455.88,
+      "rmse_improvement_pct": -409.9,
+      "r2_delta": -1.3233
+    }
+  ],
+  "final_test_metrics": [
+    {
+      "model": "Gradient Boosting (Tuned)",
+      "mae": 10.2698,
+      "rmse": 18.8796,
+      "r2": 0.9608,
+      "mbe": 0.1674,
+      "n_obs": 4903,
+      "training_time_s": 52.99,
+      "mae_improvement_pct": 8.1,
+      "rmse_improvement_pct": 9.4,
+      "r2_delta": 0.0085
+    },
+    {
+      "model": "Gradient Boosting (Default)",
+      "mae": 10.3967,
+      "rmse": 19.0884,
+      "r2": 0.9599,
+      "mbe": 0.7277,
+      "n_obs": 4903,
+      "training_time_s": 34.47,
+      "mae_improvement_pct": 6.96,
+      "rmse_improvement_pct": 8.4,
+      "r2_delta": 0.0076
+    },
+    {
+      "model": "Linear Regression",
+      "mae": 10.7141,
+      "rmse": 18.902,
+      "r2": 0.9607,
+      "mbe": 0.3614,
+      "n_obs": 4903,
+      "training_time_s": 0.04,
+      "mae_improvement_pct": 4.12,
+      "rmse_improvement_pct": 9.29,
+      "r2_delta": 0.0084
+    },
+    {
+      "model": "Persistence (Naive Lag-1)",
+      "mae": 11.175,
+      "rmse": 20.8384,
+      "r2": 0.9523,
+      "mbe": 0.0194,
+      "n_obs": 4903,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": 0.0,
+      "rmse_improvement_pct": 0.0,
+      "r2_delta": 0.0
+    },
+    {
+      "model": "Persistence (Constant Mean)",
+      "mae": 73.2292,
+      "rmse": 116.4701,
+      "r2": -0.4913,
+      "mbe": -66.8491,
+      "n_obs": 4903,
+      "training_time_s": 0.0,
+      "mae_improvement_pct": -555.29,
+      "rmse_improvement_pct": -458.92,
+      "r2_delta": -1.4436
+    }
+  ]
+}

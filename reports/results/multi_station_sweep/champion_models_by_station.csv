@@ -1,0 +1,13 @@
+station,model,test_mae,test_rmse,test_r2,test_mbe,n_obs,mae_improvement_pct,rmse_improvement_pct,r2_delta
+Aotizhongxin,Gradient Boosting (Tuned),10.228,19.4863,0.9576,-0.5699,4920,7.72,7.48,0.0072
+Changping,Gradient Boosting (Default),10.4691,19.8162,0.9412,-0.0463,4973,1.59,2.43,0.003
+Dingling,Gradient Boosting (Default),8.4147,16.3218,0.9505,0.4787,4695,3.92,6.36,0.0069
+Dongsi,Gradient Boosting (Tuned),11.1081,22.5228,0.9531,-0.2121,4723,6.07,4.98,0.005
+Guanyuan,Gradient Boosting (Tuned),10.2662,18.9944,0.9593,0.477,4846,8.48,8.74,0.0081
+Gucheng,Gradient Boosting (Tuned),10.544,21.6312,0.9549,-1.1803,4832,3.96,5.62,0.0055
+Huairou,Gradient Boosting (Tuned),8.4206,18.9275,0.9399,0.37,4899,5.18,4.14,0.0053
+Nongzhanguan,Gradient Boosting (Tuned),10.3369,20.3241,0.9577,-0.2911,4835,6.25,4.88,0.0045
+Shunyi,Gradient Boosting (Tuned),10.2047,20.4124,0.9529,0.8147,4725,9.38,6.54,0.0068
+Tiantan,Gradient Boosting (Tuned),10.2698,18.8796,0.9608,0.1674,4903,8.1,9.4,0.0085
+Wanliu,Gradient Boosting (Tuned),9.503,19.315,0.9557,0.4587,4951,4.84,3.54,0.0033
+Wanshouxigong,Gradient Boosting (Tuned),11.5123,25.2797,0.9415,-1.0843,4899,2.87,1.59,0.0019

@@ -1,0 +1,6 @@
+model,mae,rmse,r2,mbe,n_obs,training_time_s,mae_improvement_pct,rmse_improvement_pct,r2_delta
+Gradient Boosting (Tuned),9.1819,17.0905,0.9535,-0.4656,4918,59.08,5.26,5.38,0.0055
+Gradient Boosting (Default),9.4327,17.3105,0.9523,-0.6802,4918,38.73,2.67,4.17,0.0043
+Linear Regression,9.6511,16.6733,0.9557,-0.4217,4918,0.03,0.42,7.69,0.0077
+Persistence (Naive Lag-1),9.6919,18.063,0.948,0.0258,4918,0.0,0.0,0.0,0.0
+Persistence (Constant Mean),52.389,88.1494,-0.2381,-38.6578,4918,0.0,-440.54,-388.01,-1.1861

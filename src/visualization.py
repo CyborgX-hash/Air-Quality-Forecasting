@@ -749,3 +749,255 @@ def plot_error_by_pollution_tier(
         logger.info("Saved pollution tier error plot to %s", out_file)
 
     return fig
+
+
+# ---------------------------------------------------------------------------
+# Multi-Station Aggregate Visualization Suite
+# ---------------------------------------------------------------------------
+
+def plot_multi_station_mae_comparison(
+    df_sweep: pd.DataFrame,
+    save_path: Optional[Union[str, Path]] = None,
+    title: str = "Test MAE across 12 Beijing Monitoring Stations by Model",
+) -> plt.Figure:
+    """
+    Generate grouped bar chart of Test MAE across all 12 stations and candidate models.
+
+    Parameters
+    ----------
+    df_sweep : pd.DataFrame
+        DataFrame with columns: ['station', 'model', 'test_mae'].
+    save_path : Optional[Union[str, Path]]
+        Destination path for saving PNG.
+    title : str
+        Figure title.
+    """
+    fig, ax = plt.subplots(figsize=(14, 7))
+
+    models_order = [
+        "Gradient Boosting (Tuned)",
+        "Gradient Boosting (Default)",
+        "Linear Regression",
+        "Persistence (Naive Lag-1)",
+    ]
+    # Filter to known models if available
+    available_models = [m for m in models_order if m in df_sweep["model"].unique()]
+    if not available_models:
+        available_models = sorted(df_sweep["model"].unique())
+
+    df_filtered = df_sweep[df_sweep["model"].isin(available_models)].copy()
+    stations = sorted(df_filtered["station"].unique())
+
+    palette = {
+        "Gradient Boosting (Tuned)": "#16a085",
+        "Gradient Boosting (Default)": "#2980b9",
+        "Linear Regression": "#f39c12",
+        "Persistence (Naive Lag-1)": "#c0392b",
+        "Persistence (Constant Mean)": "#7f8c8d",
+    }
+
+    sns.barplot(
+        data=df_filtered,
+        x="station",
+        y="test_mae",
+        hue="model",
+        hue_order=available_models,
+        palette=palette,
+        ax=ax,
+        edgecolor="black",
+        linewidth=0.5,
+    )
+
+    # Plot overall benchmark mean line for tuned model
+    tuned_rows = df_filtered[df_filtered["model"] == "Gradient Boosting (Tuned)"]
+    if not tuned_rows.empty:
+        mean_tuned_mae = tuned_rows["test_mae"].mean()
+        ax.axhline(
+            mean_tuned_mae,
+            color="#16a085",
+            linestyle="--",
+            linewidth=1.8,
+            label=f"12-Station Tuned GB Mean ({mean_tuned_mae:.2f} µg/m³)",
+        )
+
+    ax.set_ylabel("Test MAE (µg/m³)", fontweight="bold")
+    ax.set_xlabel("Monitoring Station", fontweight="bold")
+    ax.set_title(title, fontweight="bold", pad=14)
+    ax.set_xticklabels(stations, rotation=25, ha="right", fontweight="bold")
+    ax.grid(True, linestyle="--", alpha=0.5, axis="y")
+    ax.legend(title="Model Architecture", frameon=True, framealpha=0.9, loc="upper right")
+    plt.tight_layout()
+
+    out_file = _ensure_dir(save_path)
+    if out_file:
+        fig.savefig(out_file)
+        logger.info("Saved multi-station MAE plot to %s", out_file)
+
+    return fig
+
+
+def plot_multi_station_r2_comparison(
+    df_sweep: pd.DataFrame,
+    save_path: Optional[Union[str, Path]] = None,
+    title: str = "Test R² Performance across 12 Beijing Monitoring Stations",
+) -> plt.Figure:
+    """
+    Generate comparison of Test R² across all 12 stations for champion vs baseline models.
+    """
+    fig, ax = plt.subplots(figsize=(14, 6))
+
+    models_order = [
+        "Gradient Boosting (Tuned)",
+        "Linear Regression",
+        "Persistence (Naive Lag-1)",
+    ]
+    available_models = [m for m in models_order if m in df_sweep["model"].unique()]
+    if not available_models:
+        available_models = sorted(df_sweep["model"].unique())
+
+    df_filtered = df_sweep[df_sweep["model"].isin(available_models)].copy()
+    stations = sorted(df_filtered["station"].unique())
+
+    palette = {
+        "Gradient Boosting (Tuned)": "#16a085",
+        "Linear Regression": "#f39c12",
+        "Persistence (Naive Lag-1)": "#c0392b",
+    }
+
+    sns.barplot(
+        data=df_filtered,
+        x="station",
+        y="test_r2",
+        hue="model",
+        hue_order=available_models,
+        palette=palette,
+        ax=ax,
+        edgecolor="black",
+        linewidth=0.5,
+    )
+
+    ax.set_ylabel("Test R²", fontweight="bold")
+    ax.set_xlabel("Monitoring Station", fontweight="bold")
+    ax.set_ylim(0.90, 0.98)
+    ax.set_title(title, fontweight="bold", pad=14)
+    ax.set_xticklabels(stations, rotation=25, ha="right", fontweight="bold")
+    ax.grid(True, linestyle="--", alpha=0.5, axis="y")
+    ax.legend(title="Model Architecture", frameon=True, framealpha=0.9, loc="lower right")
+    plt.tight_layout()
+
+    out_file = _ensure_dir(save_path)
+    if out_file:
+        fig.savefig(out_file)
+        logger.info("Saved multi-station R² plot to %s", out_file)
+
+    return fig
+
+
+def plot_multi_station_metric_heatmap(
+    df_sweep: pd.DataFrame,
+    metric: str = "test_mae",
+    save_path: Optional[Union[str, Path]] = None,
+    title: Optional[str] = None,
+) -> plt.Figure:
+    """
+    Generate a heatmap of stations (rows) vs models (columns) for a specific metric.
+    """
+    fig, ax = plt.subplots(figsize=(10, 8))
+
+    models_order = [
+        "Gradient Boosting (Tuned)",
+        "Gradient Boosting (Default)",
+        "Linear Regression",
+        "Persistence (Naive Lag-1)",
+    ]
+    df_filtered = df_sweep[df_sweep["model"].isin(models_order)].copy()
+    pivot_df = df_filtered.pivot(index="station", columns="model", values=metric)
+    # Reorder columns
+    cols = [m for m in models_order if m in pivot_df.columns]
+    pivot_df = pivot_df[cols]
+
+    cmap = "viridis_r" if "mae" in metric or "rmse" in metric else "viridis"
+    fmt = ".2f"
+
+    sns.heatmap(
+        pivot_df,
+        annot=True,
+        fmt=fmt,
+        cmap=cmap,
+        linewidths=0.5,
+        cbar_kws={"label": metric.replace("_", " ").upper()},
+        ax=ax,
+    )
+
+    plot_title = title or f"12-Station Comparison Matrix ({metric.replace('_', ' ').title()})"
+    ax.set_title(plot_title, fontweight="bold", pad=14)
+    ax.set_xlabel("Model Architecture", fontweight="bold")
+    ax.set_ylabel("Monitoring Station", fontweight="bold")
+    plt.tight_layout()
+
+    out_file = _ensure_dir(save_path)
+    if out_file:
+        fig.savefig(out_file)
+        logger.info("Saved multi-station heatmap to %s", out_file)
+
+    return fig
+
+
+def plot_multi_station_improvement_pct(
+    df_sweep: pd.DataFrame,
+    save_path: Optional[Union[str, Path]] = None,
+    title: str = "MAE Improvement over Naive Persistence (%) across 12 Stations",
+) -> plt.Figure:
+    """
+    Plot relative MAE reduction (%) over persistence baseline across all stations.
+    """
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    tuned_df = df_sweep[df_sweep["model"] == "Gradient Boosting (Tuned)"].sort_values(
+        by="mae_improvement_pct", ascending=False
+    )
+
+    bars = ax.bar(
+        tuned_df["station"],
+        tuned_df["mae_improvement_pct"],
+        color="#27ae60",
+        edgecolor="black",
+        linewidth=0.8,
+        width=0.6,
+    )
+
+    mean_imprv = tuned_df["mae_improvement_pct"].mean()
+    ax.axhline(
+        mean_imprv,
+        color="#c0392b",
+        linestyle="--",
+        linewidth=1.8,
+        label=f"12-Station Average Improvement ({mean_imprv:.2f}%)",
+    )
+
+    for b in bars:
+        h = b.get_height()
+        ax.text(
+            b.get_x() + b.get_width() / 2,
+            h + 0.2,
+            f"+{h:.2f}%",
+            ha="center",
+            va="bottom",
+            fontsize=9.5,
+            fontweight="bold",
+        )
+
+    ax.set_ylabel("MAE Improvement (%)", fontweight="bold")
+    ax.set_xlabel("Monitoring Station", fontweight="bold")
+    ax.set_title(title, fontweight="bold", pad=14)
+    ax.set_xticklabels(tuned_df["station"], rotation=25, ha="right", fontweight="bold")
+    ax.grid(True, linestyle="--", alpha=0.5, axis="y")
+    ax.legend(frameon=True, framealpha=0.9, loc="upper right")
+    plt.tight_layout()
+
+    out_file = _ensure_dir(save_path)
+    if out_file:
+        fig.savefig(out_file)
+        logger.info("Saved multi-station improvement plot to %s", out_file)
+
+    return fig

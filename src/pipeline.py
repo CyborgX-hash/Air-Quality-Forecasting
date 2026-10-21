@@ -162,12 +162,17 @@ def get_environment_metadata() -> Dict[str, Any]:
     # Core package versions
     packages = ["pandas", "numpy", "scikit-learn", "matplotlib", "seaborn", "pytest"]
     pkg_versions = {}
+    import importlib.metadata
     for pkg in packages:
         try:
-            mod = __import__(pkg.replace("-", "_"))
-            pkg_versions[pkg] = getattr(mod, "__version__", "unknown")
-        except ImportError:
-            pkg_versions[pkg] = "not installed"
+            pkg_versions[pkg] = importlib.metadata.version(pkg)
+        except Exception:
+            try:
+                mod_name = "sklearn" if pkg == "scikit-learn" else pkg.replace("-", "_")
+                mod = __import__(mod_name)
+                pkg_versions[pkg] = getattr(mod, "__version__", "unknown")
+            except ImportError:
+                pkg_versions[pkg] = "not installed"
     meta["packages"] = pkg_versions
 
     return meta
@@ -800,6 +805,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Random seed for model reproducibility",
     )
     parser.add_argument(
+        "--all-stations",
+        action="store_true",
+        help="Run batch benchmark sweep sequentially or in parallel across all 12 stations",
+    )
+    parser.add_argument(
+        "--n-jobs",
+        type=int,
+        default=4,
+        help="Number of concurrent processes for multi-station execution",
+    )
+    parser.add_argument(
         "--horizon",
         type=int,
         default=1,
@@ -812,6 +828,26 @@ def main() -> None:
     """CLI entry point for running the pipeline."""
     parser = build_arg_parser()
     args = parser.parse_args()
+
+    # Route to multi-station sweep if --all-stations or --station all is passed
+    if args.all_stations or (args.station and args.station.lower() == "all"):
+        from experiments.run_experiments import run_all_stations_sweep
+        out_d = args.output_dir or "reports/results/multi_station_sweep"
+        fig_d = args.figures_dir or "reports/figures/multi_station_sweep"
+        if out_d == "reports/results":
+            out_d = "reports/results/multi_station_sweep"
+        if fig_d == "reports/figures":
+            fig_d = "reports/figures/multi_station_sweep"
+
+        run_all_stations_sweep(
+            data_dir=args.data_dir or "data/raw",
+            output_dir=out_d,
+            figures_dir=fig_d,
+            tune_gb=args.tune_gb,
+            random_seed=args.seed,
+            n_jobs=args.n_jobs,
+        )
+        return
 
     # Load or construct configuration
     if args.config:

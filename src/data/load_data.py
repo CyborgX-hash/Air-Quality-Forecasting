@@ -189,3 +189,112 @@ def load_all_stations(data_dir: Union[str, Path]) -> pd.DataFrame:
     df_all = pd.concat(station_dfs, ignore_index=True)
     df_all = df_all.sort_values(by=["station", "datetime"]).reset_index(drop=True)
     return df_all
+
+
+def validate_all_stations_schema(
+    data_dir: Union[str, Path],
+    expected_stations: Optional[List[str]] = None,
+) -> Dict[str, Any]:
+    """
+    Validate dataset existence, schema conformity, and temporal continuity for all stations.
+
+    Parameters
+    ----------
+    data_dir : Union[str, Path]
+        Directory path containing the station CSV files.
+    expected_stations : Optional[List[str]], default None
+        List of expected station names. If None, defaults to the standard 12 stations.
+
+    Returns
+    -------
+    Dict[str, Any]
+        Audit dictionary containing:
+        - all_valid: bool indicating if all checks passed
+        - num_stations: count of validated stations
+        - stations_found: list of station names found and verified
+        - stations_missing: list of missing station names
+        - station_reports: detailed dictionary per station
+    """
+    if expected_stations is None:
+        expected_stations = [
+            "Aotizhongxin",
+            "Changping",
+            "Dingling",
+            "Dongsi",
+            "Guanyuan",
+            "Gucheng",
+            "Huairou",
+            "Nongzhanguan",
+            "Shunyi",
+            "Tiantan",
+            "Wanliu",
+            "Wanshouxigong",
+        ]
+
+    dir_path = Path(data_dir)
+    reports: Dict[str, Any] = {}
+    missing_stations: List[str] = []
+    found_stations: List[str] = []
+    all_valid = True
+
+    for station in expected_stations:
+        # Match pattern: PRSA_Data_{station}_*.csv
+        matches = sorted(dir_path.glob(f"PRSA_Data_{station}_*.csv"))
+        if not matches:
+            # Case-insensitive fallback
+            for f in dir_path.glob("PRSA_Data_*.csv"):
+                if station.lower() in f.name.lower():
+                    matches = [f]
+                    break
+
+        if not matches:
+            missing_stations.append(station)
+            all_valid = False
+            reports[station] = {
+                "valid": False,
+                "error": f"File not found for station '{station}' in {dir_path}",
+            }
+            continue
+
+        file_path = matches[0]
+        found_stations.append(station)
+
+        try:
+            df = load_station_data(file_path)
+            # Check schema
+            missing_cols = [c for c in REQUIRED_COLUMNS if c not in df.columns]
+            audit = validate_data(df)
+            has_valid_schema = len(missing_cols) == 0
+            station_valid = has_valid_schema and audit["is_valid"]
+            if not station_valid:
+                all_valid = False
+
+            reports[station] = {
+                "valid": station_valid,
+                "file_path": str(file_path),
+                "record_count": len(df),
+                "start_timestamp": str(df["datetime"].min()),
+                "end_timestamp": str(df["datetime"].max()),
+                "missing_columns": missing_cols,
+                "duplicate_records": audit["duplicate_records"],
+                "is_chronological": audit["is_chronological"],
+                "is_hourly_continuous": audit["is_hourly_continuous"],
+                "target_missing": audit["target_stats"]["missing"],
+                "target_valid": audit["target_stats"]["valid"],
+            }
+        except Exception as exc:
+            all_valid = False
+            reports[station] = {
+                "valid": False,
+                "file_path": str(file_path),
+                "error": str(exc),
+            }
+
+    return {
+        "all_valid": all_valid and len(missing_stations) == 0,
+        "num_stations": len(found_stations),
+        "expected_count": len(expected_stations),
+        "stations_found": sorted(found_stations),
+        "stations_missing": sorted(missing_stations),
+        "station_reports": reports,
+    }
