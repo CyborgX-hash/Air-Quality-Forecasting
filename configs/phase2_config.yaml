@@ -1,0 +1,104 @@
+# ==============================================================================
+# Phase 2 LSTM Configuration: Air Quality Forecasting
+# Beijing Multi-Site Air Quality Dataset (UCI Machine Learning Repository)
+# ==============================================================================
+
+project:
+  name: "Air Quality Forecasting via Gradient Boosting and LSTM Models"
+  phase: 2
+  target: "PM2.5"
+  random_seed: 42
+
+stations:
+  all:
+    - "Aotizhongxin"
+    - "Changping"
+    - "Dingling"
+    - "Dongsi"
+    - "Guanyuan"
+    - "Gucheng"
+    - "Huairou"
+    - "Nongzhanguan"
+    - "Shunyi"
+    - "Tiantan"
+    - "Wanliu"
+    - "Wanshouxigong"
+  default: "Aotizhongxin"
+
+data:
+  raw_dir: "Data/Raw"
+  timestamp_column: "datetime"
+  station_column: "station"
+  target_column: "PM2.5"
+
+cleaning:
+  max_ffill_hours: 6
+  encode_wind: true
+  fill_remaining_with_median: true
+  impute_target: false  # Target is strictly NEVER imputed
+
+features:
+  # Base pollutant concentrations at timestep t (µg/m³)
+  pollutants:
+    - "PM2.5"
+    - "PM10"
+    - "SO2"
+    - "NO2"
+    - "CO"
+    - "O3"
+  # Meteorological measurements at timestep t
+  meteorology:
+    - "TEMP"
+    - "PRES"
+    - "DEWP"
+    - "RAIN"
+    - "WSPM"
+  # Continuous cyclical wind vector components
+  wind:
+    - "wd_sin"
+    - "wd_cos"
+  # Meteorological domain interaction features
+  domain:
+    - "temp_dewp_spread"
+    - "wind_stagnation"
+    - "rain_clearing"
+  # Temporal and diurnal cyclical components
+  temporal:
+    - "sin_hour"
+    - "cos_hour"
+    - "sin_month"
+    - "cos_month"
+    - "sin_dow"
+    - "cos_dow"
+
+lstm_windows:
+  # Historical input sequence windows W (hours)
+  input_sequence_lengths:
+    - 24
+    - 48
+    - 72
+  default_sequence_length: 24
+
+forecast_horizons:
+  # Forecast horizons H (hours ahead)
+  horizons:
+    - 1
+    - 3
+    - 6
+    - 12
+    - 24
+  default_horizon: 1
+
+split:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  chronological: true
+  embargo_hours: 0  # Configurable boundary embargo hours
+
+scaling:
+  scaler_type: "standard"  # "standard" (StandardScaler) or "minmax" (MinMaxScaler)
+  scalers_dir: "models/phase2/scalers"
+  save_scalers: true
+  scale_target: true
+
