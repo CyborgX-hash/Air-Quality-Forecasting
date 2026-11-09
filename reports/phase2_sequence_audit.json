@@ -1,0 +1,3422 @@
+{
+  "Aotizhongxin": {
+    "station_name": "Aotizhongxin",
+    "split_time_sec": 0.09,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.571,
+        "train": {
+          "station_name": "Aotizhongxin",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22904,
+          "total_excluded": 1593,
+          "excluded_missing_target": 1593,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.5028,
+          "retention_rate_pct": 93.4972
+        },
+        "val": {
+          "station_name": "Aotizhongxin",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4870,
+          "total_excluded": 415,
+          "excluded_missing_target": 367,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 7.8524,
+          "retention_rate_pct": 92.1476
+        },
+        "test": {
+          "station_name": "Aotizhongxin",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4958,
+          "total_excluded": 327,
+          "excluded_missing_target": 279,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.1873,
+          "retention_rate_pct": 93.8127
+        },
+        "X_train_shape": [
+          22904,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22904,
+          5
+        ],
+        "X_val_shape": [
+          4870,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4870,
+          5
+        ],
+        "X_test_shape": [
+          4958,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4958,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.623,
+        "train": {
+          "station_name": "Aotizhongxin",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22880,
+          "total_excluded": 1593,
+          "excluded_missing_target": 1593,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.5092,
+          "retention_rate_pct": 93.4908
+        },
+        "val": {
+          "station_name": "Aotizhongxin",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4870,
+          "total_excluded": 391,
+          "excluded_missing_target": 367,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 7.432,
+          "retention_rate_pct": 92.568
+        },
+        "test": {
+          "station_name": "Aotizhongxin",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4958,
+          "total_excluded": 303,
+          "excluded_missing_target": 279,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.7594,
+          "retention_rate_pct": 94.2406
+        },
+        "X_train_shape": [
+          22880,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22880,
+          5
+        ],
+        "X_val_shape": [
+          4870,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4870,
+          5
+        ],
+        "X_test_shape": [
+          4958,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4958,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.845,
+        "train": {
+          "station_name": "Aotizhongxin",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22856,
+          "total_excluded": 1593,
+          "excluded_missing_target": 1593,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.5156,
+          "retention_rate_pct": 93.4844
+        },
+        "val": {
+          "station_name": "Aotizhongxin",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4870,
+          "total_excluded": 367,
+          "excluded_missing_target": 367,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.0078,
+          "retention_rate_pct": 92.9922
+        },
+        "test": {
+          "station_name": "Aotizhongxin",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4958,
+          "total_excluded": 279,
+          "excluded_missing_target": 279,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.3275,
+          "retention_rate_pct": 94.6725
+        },
+        "X_train_shape": [
+          22856,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22856,
+          5
+        ],
+        "X_val_shape": [
+          4870,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4870,
+          5
+        ],
+        "X_test_shape": [
+          4958,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4958,
+          5
+        ]
+      }
+    }
+  },
+  "Changping": {
+    "station_name": "Changping",
+    "split_time_sec": 0.1,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.665,
+        "train": {
+          "station_name": "Changping",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22927,
+          "total_excluded": 1570,
+          "excluded_missing_target": 1570,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4089,
+          "retention_rate_pct": 93.5911
+        },
+        "val": {
+          "station_name": "Changping",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4895,
+          "total_excluded": 390,
+          "excluded_missing_target": 342,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 7.3794,
+          "retention_rate_pct": 92.6206
+        },
+        "test": {
+          "station_name": "Changping",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 5011,
+          "total_excluded": 274,
+          "excluded_missing_target": 226,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 5.1845,
+          "retention_rate_pct": 94.8155
+        },
+        "X_train_shape": [
+          22927,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22927,
+          5
+        ],
+        "X_val_shape": [
+          4895,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4895,
+          5
+        ],
+        "X_test_shape": [
+          5011,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          5011,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.62,
+        "train": {
+          "station_name": "Changping",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22903,
+          "total_excluded": 1570,
+          "excluded_missing_target": 1570,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4152,
+          "retention_rate_pct": 93.5848
+        },
+        "val": {
+          "station_name": "Changping",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4895,
+          "total_excluded": 366,
+          "excluded_missing_target": 342,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 6.9569,
+          "retention_rate_pct": 93.0431
+        },
+        "test": {
+          "station_name": "Changping",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 5011,
+          "total_excluded": 250,
+          "excluded_missing_target": 226,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 4.7519,
+          "retention_rate_pct": 95.2481
+        },
+        "X_train_shape": [
+          22903,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22903,
+          5
+        ],
+        "X_val_shape": [
+          4895,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4895,
+          5
+        ],
+        "X_test_shape": [
+          5011,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          5011,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.643,
+        "train": {
+          "station_name": "Changping",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22879,
+          "total_excluded": 1570,
+          "excluded_missing_target": 1570,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4215,
+          "retention_rate_pct": 93.5785
+        },
+        "val": {
+          "station_name": "Changping",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4895,
+          "total_excluded": 342,
+          "excluded_missing_target": 342,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.5305,
+          "retention_rate_pct": 93.4695
+        },
+        "test": {
+          "station_name": "Changping",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 5011,
+          "total_excluded": 226,
+          "excluded_missing_target": 226,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 4.3154,
+          "retention_rate_pct": 95.6846
+        },
+        "X_train_shape": [
+          22879,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22879,
+          5
+        ],
+        "X_val_shape": [
+          4895,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4895,
+          5
+        ],
+        "X_test_shape": [
+          5011,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          5011,
+          5
+        ]
+      }
+    }
+  },
+  "Dingling": {
+    "station_name": "Dingling",
+    "split_time_sec": 0.08,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.569,
+        "train": {
+          "station_name": "Dingling",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 23134,
+          "total_excluded": 1363,
+          "excluded_missing_target": 1363,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.5639,
+          "retention_rate_pct": 94.4361
+        },
+        "val": {
+          "station_name": "Dingling",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4804,
+          "total_excluded": 481,
+          "excluded_missing_target": 433,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 9.1012,
+          "retention_rate_pct": 90.8988
+        },
+        "test": {
+          "station_name": "Dingling",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4765,
+          "total_excluded": 520,
+          "excluded_missing_target": 472,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 9.8392,
+          "retention_rate_pct": 90.1608
+        },
+        "X_train_shape": [
+          23134,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          23134,
+          5
+        ],
+        "X_val_shape": [
+          4804,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4804,
+          5
+        ],
+        "X_test_shape": [
+          4765,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4765,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.614,
+        "train": {
+          "station_name": "Dingling",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 23110,
+          "total_excluded": 1363,
+          "excluded_missing_target": 1363,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.5694,
+          "retention_rate_pct": 94.4306
+        },
+        "val": {
+          "station_name": "Dingling",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4804,
+          "total_excluded": 457,
+          "excluded_missing_target": 433,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 8.6866,
+          "retention_rate_pct": 91.3134
+        },
+        "test": {
+          "station_name": "Dingling",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4765,
+          "total_excluded": 496,
+          "excluded_missing_target": 472,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 9.4279,
+          "retention_rate_pct": 90.5721
+        },
+        "X_train_shape": [
+          23110,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          23110,
+          5
+        ],
+        "X_val_shape": [
+          4804,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4804,
+          5
+        ],
+        "X_test_shape": [
+          4765,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4765,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.634,
+        "train": {
+          "station_name": "Dingling",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 23086,
+          "total_excluded": 1363,
+          "excluded_missing_target": 1363,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.5749,
+          "retention_rate_pct": 94.4251
+        },
+        "val": {
+          "station_name": "Dingling",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4804,
+          "total_excluded": 433,
+          "excluded_missing_target": 433,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 8.2681,
+          "retention_rate_pct": 91.7319
+        },
+        "test": {
+          "station_name": "Dingling",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4765,
+          "total_excluded": 472,
+          "excluded_missing_target": 472,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 9.0128,
+          "retention_rate_pct": 90.9872
+        },
+        "X_train_shape": [
+          23086,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          23086,
+          5
+        ],
+        "X_val_shape": [
+          4804,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4804,
+          5
+        ],
+        "X_test_shape": [
+          4765,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4765,
+          5
+        ]
+      }
+    }
+  },
+  "Dongsi": {
+    "station_name": "Dongsi",
+    "split_time_sec": 0.08,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.569,
+        "train": {
+          "station_name": "Dongsi",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 23298,
+          "total_excluded": 1199,
+          "excluded_missing_target": 1199,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 4.8945,
+          "retention_rate_pct": 95.1055
+        },
+        "val": {
+          "station_name": "Dongsi",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4696,
+          "total_excluded": 589,
+          "excluded_missing_target": 541,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 11.1447,
+          "retention_rate_pct": 88.8553
+        },
+        "test": {
+          "station_name": "Dongsi",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4778,
+          "total_excluded": 507,
+          "excluded_missing_target": 459,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 9.5932,
+          "retention_rate_pct": 90.4068
+        },
+        "X_train_shape": [
+          23298,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          23298,
+          5
+        ],
+        "X_val_shape": [
+          4696,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4696,
+          5
+        ],
+        "X_test_shape": [
+          4778,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4778,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.609,
+        "train": {
+          "station_name": "Dongsi",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 23274,
+          "total_excluded": 1199,
+          "excluded_missing_target": 1199,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 4.8993,
+          "retention_rate_pct": 95.1007
+        },
+        "val": {
+          "station_name": "Dongsi",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4696,
+          "total_excluded": 565,
+          "excluded_missing_target": 541,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 10.7394,
+          "retention_rate_pct": 89.2606
+        },
+        "test": {
+          "station_name": "Dongsi",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4778,
+          "total_excluded": 483,
+          "excluded_missing_target": 459,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 9.1808,
+          "retention_rate_pct": 90.8192
+        },
+        "X_train_shape": [
+          23274,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          23274,
+          5
+        ],
+        "X_val_shape": [
+          4696,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4696,
+          5
+        ],
+        "X_test_shape": [
+          4778,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4778,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.712,
+        "train": {
+          "station_name": "Dongsi",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 23250,
+          "total_excluded": 1199,
+          "excluded_missing_target": 1199,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 4.9041,
+          "retention_rate_pct": 95.0959
+        },
+        "val": {
+          "station_name": "Dongsi",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4696,
+          "total_excluded": 541,
+          "excluded_missing_target": 541,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 10.3303,
+          "retention_rate_pct": 89.6697
+        },
+        "test": {
+          "station_name": "Dongsi",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4778,
+          "total_excluded": 459,
+          "excluded_missing_target": 459,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 8.7646,
+          "retention_rate_pct": 91.2354
+        },
+        "X_train_shape": [
+          23250,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          23250,
+          5
+        ],
+        "X_val_shape": [
+          4696,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4696,
+          5
+        ],
+        "X_test_shape": [
+          4778,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4778,
+          5
+        ]
+      }
+    }
+  },
+  "Guanyuan": {
+    "station_name": "Guanyuan",
+    "split_time_sec": 0.09,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.716,
+        "train": {
+          "station_name": "Guanyuan",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 23191,
+          "total_excluded": 1306,
+          "excluded_missing_target": 1306,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.3313,
+          "retention_rate_pct": 94.6687
+        },
+        "val": {
+          "station_name": "Guanyuan",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4964,
+          "total_excluded": 321,
+          "excluded_missing_target": 273,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.0738,
+          "retention_rate_pct": 93.9262
+        },
+        "test": {
+          "station_name": "Guanyuan",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4898,
+          "total_excluded": 387,
+          "excluded_missing_target": 339,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 7.3226,
+          "retention_rate_pct": 92.6774
+        },
+        "X_train_shape": [
+          23191,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          23191,
+          5
+        ],
+        "X_val_shape": [
+          4964,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4964,
+          5
+        ],
+        "X_test_shape": [
+          4898,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4898,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.679,
+        "train": {
+          "station_name": "Guanyuan",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 23167,
+          "total_excluded": 1306,
+          "excluded_missing_target": 1306,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.3365,
+          "retention_rate_pct": 94.6635
+        },
+        "val": {
+          "station_name": "Guanyuan",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4964,
+          "total_excluded": 297,
+          "excluded_missing_target": 273,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.6453,
+          "retention_rate_pct": 94.3547
+        },
+        "test": {
+          "station_name": "Guanyuan",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4898,
+          "total_excluded": 363,
+          "excluded_missing_target": 339,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 6.8998,
+          "retention_rate_pct": 93.1002
+        },
+        "X_train_shape": [
+          23167,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          23167,
+          5
+        ],
+        "X_val_shape": [
+          4964,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4964,
+          5
+        ],
+        "X_test_shape": [
+          4898,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4898,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.751,
+        "train": {
+          "station_name": "Guanyuan",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 23143,
+          "total_excluded": 1306,
+          "excluded_missing_target": 1306,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.3417,
+          "retention_rate_pct": 94.6583
+        },
+        "val": {
+          "station_name": "Guanyuan",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4964,
+          "total_excluded": 273,
+          "excluded_missing_target": 273,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.2129,
+          "retention_rate_pct": 94.7871
+        },
+        "test": {
+          "station_name": "Guanyuan",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4898,
+          "total_excluded": 339,
+          "excluded_missing_target": 339,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4732,
+          "retention_rate_pct": 93.5268
+        },
+        "X_train_shape": [
+          23143,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          23143,
+          5
+        ],
+        "X_val_shape": [
+          4964,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4964,
+          5
+        ],
+        "X_test_shape": [
+          4898,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4898,
+          5
+        ]
+      }
+    }
+  },
+  "Gucheng": {
+    "station_name": "Gucheng",
+    "split_time_sec": 0.11,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.637,
+        "train": {
+          "station_name": "Gucheng",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22992,
+          "total_excluded": 1505,
+          "excluded_missing_target": 1505,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.1436,
+          "retention_rate_pct": 93.8564
+        },
+        "val": {
+          "station_name": "Gucheng",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4938,
+          "total_excluded": 347,
+          "excluded_missing_target": 299,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.5658,
+          "retention_rate_pct": 93.4342
+        },
+        "test": {
+          "station_name": "Gucheng",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4887,
+          "total_excluded": 398,
+          "excluded_missing_target": 350,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 7.5307,
+          "retention_rate_pct": 92.4693
+        },
+        "X_train_shape": [
+          22992,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22992,
+          5
+        ],
+        "X_val_shape": [
+          4938,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4938,
+          5
+        ],
+        "X_test_shape": [
+          4887,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4887,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.687,
+        "train": {
+          "station_name": "Gucheng",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22968,
+          "total_excluded": 1505,
+          "excluded_missing_target": 1505,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.1496,
+          "retention_rate_pct": 93.8504
+        },
+        "val": {
+          "station_name": "Gucheng",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4938,
+          "total_excluded": 323,
+          "excluded_missing_target": 299,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 6.1395,
+          "retention_rate_pct": 93.8605
+        },
+        "test": {
+          "station_name": "Gucheng",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4887,
+          "total_excluded": 374,
+          "excluded_missing_target": 350,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 7.1089,
+          "retention_rate_pct": 92.8911
+        },
+        "X_train_shape": [
+          22968,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22968,
+          5
+        ],
+        "X_val_shape": [
+          4938,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4938,
+          5
+        ],
+        "X_test_shape": [
+          4887,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4887,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.7,
+        "train": {
+          "station_name": "Gucheng",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22944,
+          "total_excluded": 1505,
+          "excluded_missing_target": 1505,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.1557,
+          "retention_rate_pct": 93.8443
+        },
+        "val": {
+          "station_name": "Gucheng",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4938,
+          "total_excluded": 299,
+          "excluded_missing_target": 299,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.7094,
+          "retention_rate_pct": 94.2906
+        },
+        "test": {
+          "station_name": "Gucheng",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4887,
+          "total_excluded": 350,
+          "excluded_missing_target": 350,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.6832,
+          "retention_rate_pct": 93.3168
+        },
+        "X_train_shape": [
+          22944,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22944,
+          5
+        ],
+        "X_val_shape": [
+          4938,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4938,
+          5
+        ],
+        "X_test_shape": [
+          4887,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4887,
+          5
+        ]
+      }
+    }
+  },
+  "Huairou": {
+    "station_name": "Huairou",
+    "split_time_sec": 0.12,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.635,
+        "train": {
+          "station_name": "Huairou",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22575,
+          "total_excluded": 1922,
+          "excluded_missing_target": 1922,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.8459,
+          "retention_rate_pct": 92.1541
+        },
+        "val": {
+          "station_name": "Huairou",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4870,
+          "total_excluded": 415,
+          "excluded_missing_target": 367,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 7.8524,
+          "retention_rate_pct": 92.1476
+        },
+        "test": {
+          "station_name": "Huairou",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4965,
+          "total_excluded": 320,
+          "excluded_missing_target": 272,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.0549,
+          "retention_rate_pct": 93.9451
+        },
+        "X_train_shape": [
+          22575,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22575,
+          5
+        ],
+        "X_val_shape": [
+          4870,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4870,
+          5
+        ],
+        "X_test_shape": [
+          4965,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4965,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.666,
+        "train": {
+          "station_name": "Huairou",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22551,
+          "total_excluded": 1922,
+          "excluded_missing_target": 1922,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.8536,
+          "retention_rate_pct": 92.1464
+        },
+        "val": {
+          "station_name": "Huairou",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4870,
+          "total_excluded": 391,
+          "excluded_missing_target": 367,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 7.432,
+          "retention_rate_pct": 92.568
+        },
+        "test": {
+          "station_name": "Huairou",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4965,
+          "total_excluded": 296,
+          "excluded_missing_target": 272,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.6263,
+          "retention_rate_pct": 94.3737
+        },
+        "X_train_shape": [
+          22551,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22551,
+          5
+        ],
+        "X_val_shape": [
+          4870,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4870,
+          5
+        ],
+        "X_test_shape": [
+          4965,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4965,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.635,
+        "train": {
+          "station_name": "Huairou",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22531,
+          "total_excluded": 1918,
+          "excluded_missing_target": 1918,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.8449,
+          "retention_rate_pct": 92.1551
+        },
+        "val": {
+          "station_name": "Huairou",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4870,
+          "total_excluded": 367,
+          "excluded_missing_target": 367,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.0078,
+          "retention_rate_pct": 92.9922
+        },
+        "test": {
+          "station_name": "Huairou",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4965,
+          "total_excluded": 272,
+          "excluded_missing_target": 272,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.1938,
+          "retention_rate_pct": 94.8062
+        },
+        "X_train_shape": [
+          22531,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22531,
+          5
+        ],
+        "X_val_shape": [
+          4870,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4870,
+          5
+        ],
+        "X_test_shape": [
+          4965,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4965,
+          5
+        ]
+      }
+    }
+  },
+  "Nongzhanguan": {
+    "station_name": "Nongzhanguan",
+    "split_time_sec": 0.09,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.568,
+        "train": {
+          "station_name": "Nongzhanguan",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22923,
+          "total_excluded": 1574,
+          "excluded_missing_target": 1574,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4253,
+          "retention_rate_pct": 93.5747
+        },
+        "val": {
+          "station_name": "Nongzhanguan",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4955,
+          "total_excluded": 330,
+          "excluded_missing_target": 282,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.2441,
+          "retention_rate_pct": 93.7559
+        },
+        "test": {
+          "station_name": "Nongzhanguan",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4901,
+          "total_excluded": 384,
+          "excluded_missing_target": 336,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 7.2658,
+          "retention_rate_pct": 92.7342
+        },
+        "X_train_shape": [
+          22923,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22923,
+          5
+        ],
+        "X_val_shape": [
+          4955,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4955,
+          5
+        ],
+        "X_test_shape": [
+          4901,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4901,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.591,
+        "train": {
+          "station_name": "Nongzhanguan",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22899,
+          "total_excluded": 1574,
+          "excluded_missing_target": 1574,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4316,
+          "retention_rate_pct": 93.5684
+        },
+        "val": {
+          "station_name": "Nongzhanguan",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4955,
+          "total_excluded": 306,
+          "excluded_missing_target": 282,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.8164,
+          "retention_rate_pct": 94.1836
+        },
+        "test": {
+          "station_name": "Nongzhanguan",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4901,
+          "total_excluded": 360,
+          "excluded_missing_target": 336,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 6.8428,
+          "retention_rate_pct": 93.1572
+        },
+        "X_train_shape": [
+          22899,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22899,
+          5
+        ],
+        "X_val_shape": [
+          4955,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4955,
+          5
+        ],
+        "X_test_shape": [
+          4901,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4901,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.642,
+        "train": {
+          "station_name": "Nongzhanguan",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22875,
+          "total_excluded": 1574,
+          "excluded_missing_target": 1574,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4379,
+          "retention_rate_pct": 93.5621
+        },
+        "val": {
+          "station_name": "Nongzhanguan",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4955,
+          "total_excluded": 282,
+          "excluded_missing_target": 282,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.3848,
+          "retention_rate_pct": 94.6152
+        },
+        "test": {
+          "station_name": "Nongzhanguan",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4901,
+          "total_excluded": 336,
+          "excluded_missing_target": 336,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.4159,
+          "retention_rate_pct": 93.5841
+        },
+        "X_train_shape": [
+          22875,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22875,
+          5
+        ],
+        "X_val_shape": [
+          4955,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4955,
+          5
+        ],
+        "X_test_shape": [
+          4901,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4901,
+          5
+        ]
+      }
+    }
+  },
+  "Shunyi": {
+    "station_name": "Shunyi",
+    "split_time_sec": 0.08,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.578,
+        "train": {
+          "station_name": "Shunyi",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 23013,
+          "total_excluded": 1484,
+          "excluded_missing_target": 1484,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.0579,
+          "retention_rate_pct": 93.9421
+        },
+        "val": {
+          "station_name": "Shunyi",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4625,
+          "total_excluded": 660,
+          "excluded_missing_target": 612,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 12.4882,
+          "retention_rate_pct": 87.5118
+        },
+        "test": {
+          "station_name": "Shunyi",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4782,
+          "total_excluded": 503,
+          "excluded_missing_target": 455,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 9.5175,
+          "retention_rate_pct": 90.4825
+        },
+        "X_train_shape": [
+          23013,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          23013,
+          5
+        ],
+        "X_val_shape": [
+          4625,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4625,
+          5
+        ],
+        "X_test_shape": [
+          4782,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4782,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.653,
+        "train": {
+          "station_name": "Shunyi",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22989,
+          "total_excluded": 1484,
+          "excluded_missing_target": 1484,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.0638,
+          "retention_rate_pct": 93.9362
+        },
+        "val": {
+          "station_name": "Shunyi",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4625,
+          "total_excluded": 636,
+          "excluded_missing_target": 612,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 12.089,
+          "retention_rate_pct": 87.911
+        },
+        "test": {
+          "station_name": "Shunyi",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4782,
+          "total_excluded": 479,
+          "excluded_missing_target": 455,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 9.1047,
+          "retention_rate_pct": 90.8953
+        },
+        "X_train_shape": [
+          22989,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22989,
+          5
+        ],
+        "X_val_shape": [
+          4625,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4625,
+          5
+        ],
+        "X_test_shape": [
+          4782,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4782,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.638,
+        "train": {
+          "station_name": "Shunyi",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22965,
+          "total_excluded": 1484,
+          "excluded_missing_target": 1484,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.0698,
+          "retention_rate_pct": 93.9302
+        },
+        "val": {
+          "station_name": "Shunyi",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4625,
+          "total_excluded": 612,
+          "excluded_missing_target": 612,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 11.6861,
+          "retention_rate_pct": 88.3139
+        },
+        "test": {
+          "station_name": "Shunyi",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4782,
+          "total_excluded": 455,
+          "excluded_missing_target": 455,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 8.6882,
+          "retention_rate_pct": 91.3118
+        },
+        "X_train_shape": [
+          22965,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22965,
+          5
+        ],
+        "X_val_shape": [
+          4625,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4625,
+          5
+        ],
+        "X_test_shape": [
+          4782,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4782,
+          5
+        ]
+      }
+    }
+  },
+  "Tiantan": {
+    "station_name": "Tiantan",
+    "split_time_sec": 0.08,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.584,
+        "train": {
+          "station_name": "Tiantan",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22782,
+          "total_excluded": 1715,
+          "excluded_missing_target": 1715,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.0009,
+          "retention_rate_pct": 92.9991
+        },
+        "val": {
+          "station_name": "Tiantan",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4950,
+          "total_excluded": 335,
+          "excluded_missing_target": 287,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.3387,
+          "retention_rate_pct": 93.6613
+        },
+        "test": {
+          "station_name": "Tiantan",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4944,
+          "total_excluded": 341,
+          "excluded_missing_target": 293,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.4522,
+          "retention_rate_pct": 93.5478
+        },
+        "X_train_shape": [
+          22782,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22782,
+          5
+        ],
+        "X_val_shape": [
+          4950,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4950,
+          5
+        ],
+        "X_test_shape": [
+          4944,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4944,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.626,
+        "train": {
+          "station_name": "Tiantan",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22758,
+          "total_excluded": 1715,
+          "excluded_missing_target": 1715,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.0077,
+          "retention_rate_pct": 92.9923
+        },
+        "val": {
+          "station_name": "Tiantan",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4950,
+          "total_excluded": 311,
+          "excluded_missing_target": 287,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.9114,
+          "retention_rate_pct": 94.0886
+        },
+        "test": {
+          "station_name": "Tiantan",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4944,
+          "total_excluded": 317,
+          "excluded_missing_target": 293,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 6.0255,
+          "retention_rate_pct": 93.9745
+        },
+        "X_train_shape": [
+          22758,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22758,
+          5
+        ],
+        "X_val_shape": [
+          4950,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4950,
+          5
+        ],
+        "X_test_shape": [
+          4944,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4944,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.663,
+        "train": {
+          "station_name": "Tiantan",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22734,
+          "total_excluded": 1715,
+          "excluded_missing_target": 1715,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 7.0146,
+          "retention_rate_pct": 92.9854
+        },
+        "val": {
+          "station_name": "Tiantan",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4950,
+          "total_excluded": 287,
+          "excluded_missing_target": 287,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.4802,
+          "retention_rate_pct": 94.5198
+        },
+        "test": {
+          "station_name": "Tiantan",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4944,
+          "total_excluded": 293,
+          "excluded_missing_target": 293,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.5948,
+          "retention_rate_pct": 94.4052
+        },
+        "X_train_shape": [
+          22734,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22734,
+          5
+        ],
+        "X_val_shape": [
+          4950,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4950,
+          5
+        ],
+        "X_test_shape": [
+          4944,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4944,
+          5
+        ]
+      }
+    }
+  },
+  "Wanliu": {
+    "station_name": "Wanliu",
+    "split_time_sec": 0.09,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.861,
+        "train": {
+          "station_name": "Wanliu",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 23534,
+          "total_excluded": 963,
+          "excluded_missing_target": 963,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 3.9311,
+          "retention_rate_pct": 96.0689
+        },
+        "val": {
+          "station_name": "Wanliu",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4976,
+          "total_excluded": 309,
+          "excluded_missing_target": 261,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 5.8467,
+          "retention_rate_pct": 94.1533
+        },
+        "test": {
+          "station_name": "Wanliu",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4989,
+          "total_excluded": 296,
+          "excluded_missing_target": 248,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 5.6008,
+          "retention_rate_pct": 94.3992
+        },
+        "X_train_shape": [
+          23534,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          23534,
+          5
+        ],
+        "X_val_shape": [
+          4976,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4976,
+          5
+        ],
+        "X_test_shape": [
+          4989,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4989,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.629,
+        "train": {
+          "station_name": "Wanliu",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 23510,
+          "total_excluded": 963,
+          "excluded_missing_target": 963,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 3.9349,
+          "retention_rate_pct": 96.0651
+        },
+        "val": {
+          "station_name": "Wanliu",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4976,
+          "total_excluded": 285,
+          "excluded_missing_target": 261,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.4172,
+          "retention_rate_pct": 94.5828
+        },
+        "test": {
+          "station_name": "Wanliu",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4989,
+          "total_excluded": 272,
+          "excluded_missing_target": 248,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 5.1701,
+          "retention_rate_pct": 94.8299
+        },
+        "X_train_shape": [
+          23510,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          23510,
+          5
+        ],
+        "X_val_shape": [
+          4976,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4976,
+          5
+        ],
+        "X_test_shape": [
+          4989,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4989,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.69,
+        "train": {
+          "station_name": "Wanliu",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 23486,
+          "total_excluded": 963,
+          "excluded_missing_target": 963,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 3.9388,
+          "retention_rate_pct": 96.0612
+        },
+        "val": {
+          "station_name": "Wanliu",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4976,
+          "total_excluded": 261,
+          "excluded_missing_target": 261,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 4.9838,
+          "retention_rate_pct": 95.0162
+        },
+        "test": {
+          "station_name": "Wanliu",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4989,
+          "total_excluded": 248,
+          "excluded_missing_target": 248,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 4.7355,
+          "retention_rate_pct": 95.2645
+        },
+        "X_train_shape": [
+          23486,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          23486,
+          5
+        ],
+        "X_val_shape": [
+          4976,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4976,
+          5
+        ],
+        "X_test_shape": [
+          4989,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4989,
+          5
+        ]
+      }
+    }
+  },
+  "Wanshouxigong": {
+    "station_name": "Wanshouxigong",
+    "split_time_sec": 0.08,
+    "windows": {
+      "24": {
+        "generation_time_sec": 0.786,
+        "train": {
+          "station_name": "Wanshouxigong",
+          "split_name": "train",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24497,
+          "valid_sequences_retained": 22988,
+          "total_excluded": 1509,
+          "excluded_missing_target": 1509,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.1599,
+          "retention_rate_pct": 93.8401
+        },
+        "val": {
+          "station_name": "Wanshouxigong",
+          "split_name": "val",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4770,
+          "total_excluded": 515,
+          "excluded_missing_target": 467,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 9.7446,
+          "retention_rate_pct": 90.2554
+        },
+        "test": {
+          "station_name": "Wanshouxigong",
+          "split_name": "test",
+          "window_size": 24,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5285,
+          "valid_sequences_retained": 4937,
+          "total_excluded": 348,
+          "excluded_missing_target": 300,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 48,
+          "exclusion_rate_pct": 6.5847,
+          "retention_rate_pct": 93.4153
+        },
+        "X_train_shape": [
+          22988,
+          24,
+          22
+        ],
+        "y_train_shape": [
+          22988,
+          5
+        ],
+        "X_val_shape": [
+          4770,
+          24,
+          22
+        ],
+        "y_val_shape": [
+          4770,
+          5
+        ],
+        "X_test_shape": [
+          4937,
+          24,
+          22
+        ],
+        "y_test_shape": [
+          4937,
+          5
+        ]
+      },
+      "48": {
+        "generation_time_sec": 0.615,
+        "train": {
+          "station_name": "Wanshouxigong",
+          "split_name": "train",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24473,
+          "valid_sequences_retained": 22964,
+          "total_excluded": 1509,
+          "excluded_missing_target": 1509,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.166,
+          "retention_rate_pct": 93.834
+        },
+        "val": {
+          "station_name": "Wanshouxigong",
+          "split_name": "val",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4770,
+          "total_excluded": 491,
+          "excluded_missing_target": 467,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 9.3328,
+          "retention_rate_pct": 90.6672
+        },
+        "test": {
+          "station_name": "Wanshouxigong",
+          "split_name": "test",
+          "window_size": 48,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5261,
+          "valid_sequences_retained": 4937,
+          "total_excluded": 324,
+          "excluded_missing_target": 300,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 24,
+          "exclusion_rate_pct": 6.1585,
+          "retention_rate_pct": 93.8415
+        },
+        "X_train_shape": [
+          22964,
+          48,
+          22
+        ],
+        "y_train_shape": [
+          22964,
+          5
+        ],
+        "X_val_shape": [
+          4770,
+          48,
+          22
+        ],
+        "y_val_shape": [
+          4770,
+          5
+        ],
+        "X_test_shape": [
+          4937,
+          48,
+          22
+        ],
+        "y_test_shape": [
+          4937,
+          5
+        ]
+      },
+      "72": {
+        "generation_time_sec": 0.654,
+        "train": {
+          "station_name": "Wanshouxigong",
+          "split_name": "train",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 24449,
+          "valid_sequences_retained": 22940,
+          "total_excluded": 1509,
+          "excluded_missing_target": 1509,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 6.172,
+          "retention_rate_pct": 93.828
+        },
+        "val": {
+          "station_name": "Wanshouxigong",
+          "split_name": "val",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4770,
+          "total_excluded": 467,
+          "excluded_missing_target": 467,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 8.9173,
+          "retention_rate_pct": 91.0827
+        },
+        "test": {
+          "station_name": "Wanshouxigong",
+          "split_name": "test",
+          "window_size": 72,
+          "horizons": [
+            1,
+            3,
+            6,
+            12,
+            24
+          ],
+          "total_candidates_evaluated": 5237,
+          "valid_sequences_retained": 4937,
+          "total_excluded": 300,
+          "excluded_missing_target": 300,
+          "excluded_nan_features": 0,
+          "excluded_timestamp_gaps": 0,
+          "excluded_boundary_violations": 0,
+          "exclusion_rate_pct": 5.7285,
+          "retention_rate_pct": 94.2715
+        },
+        "X_train_shape": [
+          22940,
+          72,
+          22
+        ],
+        "y_train_shape": [
+          22940,
+          5
+        ],
+        "X_val_shape": [
+          4770,
+          72,
+          22
+        ],
+        "y_val_shape": [
+          4770,
+          5
+        ],
+        "X_test_shape": [
+          4937,
+          72,
+          22
+        ],
+        "y_test_shape": [
+          4937,
+          5
+        ]
+      }
+    }
+  }
+}

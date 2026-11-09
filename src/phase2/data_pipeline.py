@@ -225,6 +225,28 @@ class StationDataSplits:
         """Invert scaled predictions back to PM2.5 concentration in µg/m³."""
         return self.scaler.inverse_transform_target(y_pred)
 
+    def get_multi_horizon_sequences(
+        self,
+        window_size: int = 24,
+        horizons: Sequence[int] = (1, 3, 6, 12, 24),
+        scaled: bool = True,
+        scale_target: bool = True,
+    ) -> Any:
+        """
+        Generate complete multi-horizon (N, W, D) input and (N, 5) target sequence bundle.
+
+        Delegates to Time-Series Sequence Engineering module (src.phase2.sequence_generator).
+        """
+        from src.phase2.sequence_generator import generate_station_sequence_bundle
+
+        return generate_station_sequence_bundle(
+            splits=self,
+            window_size=window_size,
+            horizons=horizons,
+            scaled=scaled,
+            scale_target=scale_target,
+        )
+
 
 def prepare_station_features(
     df_clean: pd.DataFrame,
