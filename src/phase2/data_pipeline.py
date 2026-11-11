@@ -78,7 +78,8 @@ class StationDataSplits:
     def get_train_sequences(
         self,
         window_size: int = 24,
-        horizon: int = 1,
+        horizon: Optional[Union[int, Sequence[int]]] = 1,
+        horizons: Optional[Sequence[int]] = None,
         scaled: bool = True,
         scale_target: bool = True,
     ) -> Tuple[np.ndarray, np.ndarray, pd.DatetimeIndex]:
@@ -89,8 +90,10 @@ class StationDataSplits:
         ----------
         window_size : int, default 24
             Historical lookback window in hours (e.g. 24, 48, 72).
-        horizon : int, default 1
-            Forecast horizon in hours ahead (e.g. 1, 3, 6, 12, 24).
+        horizon : Optional[Union[int, Sequence[int]]], default 1
+            Single forecast horizon (e.g. 1) or list of horizons (e.g. [1, 3, 6, 12, 24]).
+        horizons : Optional[Sequence[int]], default None
+            List of forecast horizons. If specified, overrides `horizon`.
         scaled : bool, default True
             Whether input features X should be scaled.
         scale_target : bool, default True
@@ -100,7 +103,7 @@ class StationDataSplits:
         -------
         Tuple[np.ndarray, np.ndarray, pd.DatetimeIndex]
             - X: 3D array of shape (N, window_size, len(feature_cols))
-            - y: 1D array of shape (N,)
+            - y: 1D array of shape (N,) if single horizon, or 2D array of shape (N, H)
             - target_timestamps: DatetimeIndex of length N
         """
         df_feat = self.train_scaled if scaled else self.train_df[self.feature_cols]
@@ -119,13 +122,15 @@ class StationDataSplits:
             feature_cols=self.feature_cols,
             window_size=window_size,
             horizon=horizon,
+            horizons=horizons,
             require_valid_target=True,
         )
 
     def get_val_sequences(
         self,
         window_size: int = 24,
-        horizon: int = 1,
+        horizon: Optional[Union[int, Sequence[int]]] = 1,
+        horizons: Optional[Sequence[int]] = None,
         use_context: bool = True,
         scaled: bool = True,
         scale_target: bool = True,
@@ -159,6 +164,7 @@ class StationDataSplits:
             feature_cols=self.feature_cols,
             window_size=window_size,
             horizon=horizon,
+            horizons=horizons,
             require_valid_target=True,
         )
 
@@ -174,7 +180,8 @@ class StationDataSplits:
     def get_test_sequences(
         self,
         window_size: int = 24,
-        horizon: int = 1,
+        horizon: Optional[Union[int, Sequence[int]]] = 1,
+        horizons: Optional[Sequence[int]] = None,
         use_context: bool = True,
         scaled: bool = True,
         scale_target: bool = True,
@@ -207,6 +214,7 @@ class StationDataSplits:
             feature_cols=self.feature_cols,
             window_size=window_size,
             horizon=horizon,
+            horizons=horizons,
             require_valid_target=True,
         )
 
@@ -436,16 +444,20 @@ def create_lstm_sequences(
     timestamps: Sequence[Any],
     feature_cols: Sequence[str],
     window_size: int = 24,
-    horizon: int = 1,
+    horizon: Optional[Union[int, Sequence[int]]] = 1,
+    horizons: Optional[Sequence[int]] = None,
     require_valid_target: bool = True,
 ) -> Tuple[np.ndarray, np.ndarray, pd.DatetimeIndex]:
     """
     Construct sliding sequence windows for LSTM training and evaluation.
 
+    Supports both single-horizon forecasts (e.g. horizon=1 -> 1D y shape (N,))
+    and multi-horizon forecasts (e.g. horizons=[1, 3, 6, 12, 24] -> 2D y shape (N, 5)).
+
     Given a continuous hourly sequence:
-    At index i (corresponding to timestamp t):
+    At index i (corresponding to prediction origin timestamp t):
       Input window: Features from [i - window_size + 1] up to [i] (length window_size).
-      Target: PM2.5 observation at [i + horizon].
+      Target: PM2.5 observation(s) at [i + h] for each horizon h in horizons.
 
     Parameters
     ----------
@@ -459,22 +471,44 @@ def create_lstm_sequences(
         Ordered column names for input features.
     window_size : int, default 24
         Historical lookback steps W.
-    horizon : int, default 1
-        Forecast horizon H in hours ahead.
+    horizon : Optional[Union[int, Sequence[int]]], default 1
+        Single forecast horizon H or list of horizons.
+    horizons : Optional[Sequence[int]], default None
+        List of forecast horizons. If provided, overrides `horizon`.
     require_valid_target : bool, default True
-        If True, drops sequences where the target at (t + horizon) is NaN.
+        If True, drops sequences where ANY target observation across the required
+        horizons is NaN (enforcing zero target imputation).
 
     Returns
     -------
     Tuple[np.ndarray, np.ndarray, pd.DatetimeIndex]
         - X: 3D numpy array of shape (N, window_size, len(feature_cols))
-        - y: 1D numpy array of shape (N,)
-        - target_timestamps: DatetimeIndex of length N indicating the exact target observation time
+        - y: Target array (1D shape (N,) if single horizon, or 2D shape (N, H))
+        - target_timestamps: DatetimeIndex of length N indicating the primary forecast timestamp
     """
     if window_size < 1:
         raise ValueError(f"window_size must be >= 1, got {window_size}")
-    if horizon < 1:
-        raise ValueError(f"horizon must be >= 1, got {horizon}")
+
+    # Determine horizon list and return shape mode
+    if horizons is not None:
+        active_horizons = [int(h) for h in horizons]
+        is_single = False
+    elif isinstance(horizon, (list, tuple)):
+        active_horizons = [int(h) for h in horizon]
+        is_single = False
+    elif horizon is not None:
+        active_horizons = [int(horizon)]
+        is_single = True
+    else:
+        active_horizons = [1]
+        is_single = True
+
+    for h in active_horizons:
+        if h < 1:
+            raise ValueError(f"Each horizon must be >= 1, got {h}")
+
+    max_h = max(active_horizons)
+    num_horizons = len(active_horizons)
 
     X_mat = df_features[list(feature_cols)].values
     y_vec = np.asarray(target_series, dtype=float)
@@ -482,32 +516,36 @@ def create_lstm_sequences(
 
     num_records = len(df_features)
     first_idx = window_size - 1
-    last_idx = num_records - horizon
+    last_idx = num_records - max_h
 
     if last_idx < first_idx:
+        empty_y = np.empty((0,), dtype=np.float32) if is_single else np.empty((0, num_horizons), dtype=np.float32)
         return (
             np.empty((0, window_size, len(feature_cols)), dtype=np.float32),
-            np.empty((0,), dtype=np.float32),
+            empty_y,
             pd.DatetimeIndex([]),
         )
 
     num_candidates = last_idx - first_idx
     X_candidates = np.empty((num_candidates, window_size, len(feature_cols)), dtype=np.float32)
-    y_candidates = np.empty(num_candidates, dtype=np.float32)
+    y_candidates = np.empty((num_candidates, num_horizons), dtype=np.float32)
     ts_candidates = np.empty(num_candidates, dtype="datetime64[ns]")
     valid_mask = np.ones(num_candidates, dtype=bool)
+
+    # Primary horizon for timestamp alignment
+    h_primary = active_horizons[0]
 
     for k, i in enumerate(range(first_idx, last_idx)):
         # Input window: [i - window_size + 1 : i + 1]
         X_candidates[k] = X_mat[i - window_size + 1 : i + 1]
 
-        target_idx = i + horizon
-        target_val = y_vec[target_idx]
-        y_candidates[k] = target_val
-        ts_candidates[k] = ts_vec[target_idx]
+        # Extract multi-horizon target values
+        t_vals = y_vec[[i + h for h in active_horizons]]
+        y_candidates[k] = t_vals
+        ts_candidates[k] = ts_vec[i + h_primary]
 
         # Check target validity: NEVER train or evaluate on an imputed target
-        if require_valid_target and np.isnan(target_val):
+        if require_valid_target and np.isnan(t_vals).any():
             valid_mask[k] = False
 
         # Check feature window validity (no unexpected NaNs)
@@ -515,7 +553,11 @@ def create_lstm_sequences(
             valid_mask[k] = False
 
     X_out = X_candidates[valid_mask]
-    y_out = y_candidates[valid_mask]
+    if is_single:
+        y_out = y_candidates[valid_mask, 0]
+    else:
+        y_out = y_candidates[valid_mask]
+
     ts_out = pd.DatetimeIndex(ts_candidates[valid_mask])
 
     return X_out, y_out, ts_out

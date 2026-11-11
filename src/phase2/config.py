@@ -137,8 +137,45 @@ class ScalingConfig:
 
 
 @dataclass
+class ModelConfig:
+    """LSTM model topology and optimization settings."""
+    lstm_units: int = 64
+    lstm_layers: int = 1
+    dropout_rate: float = 0.2
+    dense_units: int = 32
+    dense_activation: str = "relu"
+    output_units: int = 5
+    loss_function: str = "mae"
+    huber_delta: float = 1.0
+    learning_rate: float = 0.001
+
+
+@dataclass
+class TrainingConfig:
+    """Training loop, callbacks, and persistence settings."""
+    batch_size: int = 32
+    epochs: int = 50
+    early_stopping_patience: int = 10
+    reduce_lr_patience: int = 5
+    reduce_lr_factor: float = 0.5
+    min_lr: float = 0.00001
+    checkpoint_dir: str = "models/phase2/checkpoints"
+    history_dir: str = "reports/results/phase2/history"
+    figures_dir: str = "reports/figures/phase2"
+    save_artifacts: bool = True
+
+
+@dataclass
+class TuningConfig:
+    """Hyperparameter search and ablation study parameters."""
+    epochs_per_trial: int = 20
+    early_stopping_patience: int = 5
+    results_dir: str = "reports/results/phase2"
+
+
+@dataclass
 class Phase2Config:
-    """Master configuration container for Phase 2 LSTM Data Pipeline."""
+    """Master configuration container for Phase 2 LSTM Workflow."""
     project: ProjectMetadataConfig = field(default_factory=ProjectMetadataConfig)
     stations: StationConfig = field(default_factory=StationConfig)
     data: DataPathConfig = field(default_factory=DataPathConfig)
@@ -148,6 +185,9 @@ class Phase2Config:
     forecast_horizons: HorizonConfig = field(default_factory=HorizonConfig)
     split: SplitConfig = field(default_factory=SplitConfig)
     scaling: ScalingConfig = field(default_factory=ScalingConfig)
+    model: ModelConfig = field(default_factory=ModelConfig)
+    training: TrainingConfig = field(default_factory=TrainingConfig)
+    tuning: TuningConfig = field(default_factory=TuningConfig)
 
     def get_feature_list(self) -> List[str]:
         """Return flat list of all active feature columns in deterministic order."""
@@ -178,6 +218,9 @@ class Phase2Config:
             forecast_horizons=HorizonConfig(**d.get("forecast_horizons", {})),
             split=SplitConfig(**d.get("split", {})),
             scaling=ScalingConfig(**d.get("scaling", {})),
+            model=ModelConfig(**d.get("model", {})),
+            training=TrainingConfig(**d.get("training", {})),
+            tuning=TuningConfig(**d.get("tuning", {})),
         )
 
     @classmethod
@@ -209,6 +252,9 @@ __all__ = [
     "HorizonConfig",
     "SplitConfig",
     "ScalingConfig",
+    "ModelConfig",
+    "TrainingConfig",
+    "TuningConfig",
     "Phase2Config",
 ]
 

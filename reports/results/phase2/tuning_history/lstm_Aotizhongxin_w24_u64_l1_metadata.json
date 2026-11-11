@@ -1,0 +1,149 @@
+{
+  "station_name": "Aotizhongxin",
+  "model_tag": "lstm_Aotizhongxin_w24_u64_l1",
+  "timestamp": "2026-11-11T11:30:36Z",
+  "training_time_seconds": 6.63,
+  "best_epoch": 1,
+  "best_val_loss": 0.4007101356983185,
+  "macro_val_mae": 31.572159999999997,
+  "macro_val_rmse": 52.48484,
+  "macro_val_r2": 0.57956,
+  "random_seed": 42,
+  "architecture": {
+    "sequence_length": 24,
+    "num_features": 22,
+    "lstm_units": 64,
+    "lstm_layers": 1,
+    "dropout_rate": 0.2,
+    "dense_units": 32,
+    "dense_activation": "relu",
+    "output_units": 5,
+    "loss_function": "mae",
+    "huber_delta": 1.0,
+    "learning_rate": 0.001,
+    "horizons": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ]
+  },
+  "training_parameters": {
+    "batch_size": 32,
+    "max_epochs": 2,
+    "early_stopping_patience": 2,
+    "reduce_lr_patience": 2
+  },
+  "horizons": [
+    1,
+    3,
+    6,
+    12,
+    24
+  ],
+  "feature_columns": [
+    "PM2.5",
+    "PM10",
+    "SO2",
+    "NO2",
+    "CO",
+    "O3",
+    "TEMP",
+    "PRES",
+    "DEWP",
+    "RAIN",
+    "WSPM",
+    "wd_sin",
+    "wd_cos",
+    "temp_dewp_spread",
+    "wind_stagnation",
+    "rain_clearing",
+    "sin_hour",
+    "cos_hour",
+    "sin_month",
+    "cos_month",
+    "sin_dow",
+    "cos_dow"
+  ],
+  "scaler_summary": {
+    "station_name": "Aotizhongxin",
+    "scaler_type": "standard",
+    "target_col": "target_pm25",
+    "is_fitted": true,
+    "num_features": 22,
+    "feature_names": [
+      "PM2.5",
+      "PM10",
+      "SO2",
+      "NO2",
+      "CO",
+      "O3",
+      "TEMP",
+      "PRES",
+      "DEWP",
+      "RAIN",
+      "WSPM",
+      "wd_sin",
+      "wd_cos",
+      "temp_dewp_spread",
+      "wind_stagnation",
+      "rain_clearing",
+      "sin_hour",
+      "cos_hour",
+      "sin_month",
+      "cos_month",
+      "sin_dow",
+      "cos_dow"
+    ],
+    "target_mean": 83.65584530108339,
+    "target_std": 78.79053737984835
+  },
+  "val_metrics_table": [
+    {
+      "horizon": "1h",
+      "horizon_hours": 1,
+      "mae": 13.9438,
+      "rmse": 24.9388,
+      "r2": 0.9157,
+      "mbe": -1.575,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "3h",
+      "horizon_hours": 3,
+      "mae": 22.2888,
+      "rmse": 40.6562,
+      "r2": 0.7759,
+      "mbe": 0.2663,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "6h",
+      "horizon_hours": 6,
+      "mae": 30.2839,
+      "rmse": 54.2327,
+      "r2": 0.6017,
+      "mbe": 4.5064,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "12h",
+      "horizon_hours": 12,
+      "mae": 40.9815,
+      "rmse": 65.9488,
+      "r2": 0.4086,
+      "mbe": 6.8991,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "24h",
+      "horizon_hours": 24,
+      "mae": 50.3628,
+      "rmse": 76.6477,
+      "r2": 0.1959,
+      "mbe": 2.8832,
+      "n_obs": 4870
+    }
+  ]
+}

@@ -102,3 +102,32 @@ scaling:
   save_scalers: true
   scale_target: true
 
+model:
+  lstm_units: 64
+  lstm_layers: 1
+  dropout_rate: 0.2
+  dense_units: 32
+  dense_activation: "relu"
+  output_units: 5
+  loss_function: "mae"  # "mae" or "huber"
+  huber_delta: 1.0
+  learning_rate: 0.001
+
+training:
+  batch_size: 32
+  epochs: 50
+  early_stopping_patience: 10
+  reduce_lr_patience: 5
+  reduce_lr_factor: 0.5
+  min_lr: 0.00001
+  checkpoint_dir: "models/phase2/checkpoints"
+  history_dir: "reports/results/phase2/history"
+  figures_dir: "reports/figures/phase2"
+  save_artifacts: true
+
+tuning:
+  epochs_per_trial: 20
+  early_stopping_patience: 5
+  results_dir: "reports/results/phase2"
+
+

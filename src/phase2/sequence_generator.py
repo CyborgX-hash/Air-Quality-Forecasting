@@ -807,6 +807,9 @@ def generate_station_sequence_bundle(
         Bundle with train, val, and test SequenceDataset objects and scaler reference.
     """
     horizons_tuple = tuple(sorted(set(horizons)))
+    if isinstance(splits, str):
+        from src.phase2.data_pipeline import process_station
+        splits = process_station(splits)
     station_name = splits.station_name
     feature_cols = splits.feature_cols
     scaler = splits.scaler
