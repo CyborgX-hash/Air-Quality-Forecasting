@@ -1,0 +1,149 @@
+{
+  "station_name": "Dingling",
+  "model_tag": "lstm_Dingling_w72_u64_l1",
+  "timestamp": "2026-11-12T13:51:41Z",
+  "training_time_seconds": 42.74,
+  "best_epoch": 2,
+  "best_val_loss": 0.3722776770591736,
+  "macro_val_mae": 26.56986,
+  "macro_val_rmse": 46.23272,
+  "macro_val_r2": 0.58838,
+  "random_seed": 42,
+  "architecture": {
+    "sequence_length": 72,
+    "num_features": 22,
+    "lstm_units": 64,
+    "lstm_layers": 1,
+    "dropout_rate": 0.2,
+    "dense_units": 32,
+    "dense_activation": "relu",
+    "output_units": 5,
+    "loss_function": "mae",
+    "huber_delta": 1.0,
+    "learning_rate": 0.001,
+    "horizons": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ]
+  },
+  "training_parameters": {
+    "batch_size": 32,
+    "max_epochs": 20,
+    "early_stopping_patience": 5,
+    "reduce_lr_patience": 5
+  },
+  "horizons": [
+    1,
+    3,
+    6,
+    12,
+    24
+  ],
+  "feature_columns": [
+    "PM2.5",
+    "PM10",
+    "SO2",
+    "NO2",
+    "CO",
+    "O3",
+    "TEMP",
+    "PRES",
+    "DEWP",
+    "RAIN",
+    "WSPM",
+    "wd_sin",
+    "wd_cos",
+    "temp_dewp_spread",
+    "wind_stagnation",
+    "rain_clearing",
+    "sin_hour",
+    "cos_hour",
+    "sin_month",
+    "cos_month",
+    "sin_dow",
+    "cos_dow"
+  ],
+  "scaler_summary": {
+    "station_name": "Dingling",
+    "scaler_type": "standard",
+    "target_col": "target_pm25",
+    "is_fitted": true,
+    "num_features": 22,
+    "feature_names": [
+      "PM2.5",
+      "PM10",
+      "SO2",
+      "NO2",
+      "CO",
+      "O3",
+      "TEMP",
+      "PRES",
+      "DEWP",
+      "RAIN",
+      "WSPM",
+      "wd_sin",
+      "wd_cos",
+      "temp_dewp_spread",
+      "wind_stagnation",
+      "rain_clearing",
+      "sin_hour",
+      "cos_hour",
+      "sin_month",
+      "cos_month",
+      "sin_dow",
+      "cos_dow"
+    ],
+    "target_mean": 66.86006311506041,
+    "target_std": 71.3710852890345
+  },
+  "val_metrics_table": [
+    {
+      "horizon": "1h",
+      "horizon_hours": 1,
+      "mae": 12.4241,
+      "rmse": 25.1934,
+      "r2": 0.891,
+      "mbe": 3.1304,
+      "n_obs": 4804
+    },
+    {
+      "horizon": "3h",
+      "horizon_hours": 3,
+      "mae": 18.2233,
+      "rmse": 34.8101,
+      "r2": 0.7929,
+      "mbe": 2.226,
+      "n_obs": 4804
+    },
+    {
+      "horizon": "6h",
+      "horizon_hours": 6,
+      "mae": 24.687,
+      "rmse": 43.9916,
+      "r2": 0.6698,
+      "mbe": 2.0928,
+      "n_obs": 4804
+    },
+    {
+      "horizon": "12h",
+      "horizon_hours": 12,
+      "mae": 34.3511,
+      "rmse": 57.9467,
+      "r2": 0.4238,
+      "mbe": 2.2032,
+      "n_obs": 4804
+    },
+    {
+      "horizon": "24h",
+      "horizon_hours": 24,
+      "mae": 43.1638,
+      "rmse": 69.2218,
+      "r2": 0.1644,
+      "mbe": 2.7834,
+      "n_obs": 4804
+    }
+  ]
+}

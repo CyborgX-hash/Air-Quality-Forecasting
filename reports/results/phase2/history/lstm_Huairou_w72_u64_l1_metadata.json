@@ -1,0 +1,149 @@
+{
+  "station_name": "Huairou",
+  "model_tag": "lstm_Huairou_w72_u64_l1",
+  "timestamp": "2026-11-12T13:54:44Z",
+  "training_time_seconds": 41.86,
+  "best_epoch": 2,
+  "best_val_loss": 0.37457475066185,
+  "macro_val_mae": 26.24986,
+  "macro_val_rmse": 43.62202,
+  "macro_val_r2": 0.55072,
+  "random_seed": 42,
+  "architecture": {
+    "sequence_length": 72,
+    "num_features": 22,
+    "lstm_units": 64,
+    "lstm_layers": 1,
+    "dropout_rate": 0.2,
+    "dense_units": 32,
+    "dense_activation": "relu",
+    "output_units": 5,
+    "loss_function": "mae",
+    "huber_delta": 1.0,
+    "learning_rate": 0.001,
+    "horizons": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ]
+  },
+  "training_parameters": {
+    "batch_size": 32,
+    "max_epochs": 20,
+    "early_stopping_patience": 5,
+    "reduce_lr_patience": 5
+  },
+  "horizons": [
+    1,
+    3,
+    6,
+    12,
+    24
+  ],
+  "feature_columns": [
+    "PM2.5",
+    "PM10",
+    "SO2",
+    "NO2",
+    "CO",
+    "O3",
+    "TEMP",
+    "PRES",
+    "DEWP",
+    "RAIN",
+    "WSPM",
+    "wd_sin",
+    "wd_cos",
+    "temp_dewp_spread",
+    "wind_stagnation",
+    "rain_clearing",
+    "sin_hour",
+    "cos_hour",
+    "sin_month",
+    "cos_month",
+    "sin_dow",
+    "cos_dow"
+  ],
+  "scaler_summary": {
+    "station_name": "Huairou",
+    "scaler_type": "standard",
+    "target_col": "target_pm25",
+    "is_fitted": true,
+    "num_features": 22,
+    "feature_names": [
+      "PM2.5",
+      "PM10",
+      "SO2",
+      "NO2",
+      "CO",
+      "O3",
+      "TEMP",
+      "PRES",
+      "DEWP",
+      "RAIN",
+      "WSPM",
+      "wd_sin",
+      "wd_cos",
+      "temp_dewp_spread",
+      "wind_stagnation",
+      "rain_clearing",
+      "sin_hour",
+      "cos_hour",
+      "sin_month",
+      "cos_month",
+      "sin_dow",
+      "cos_dow"
+    ],
+    "target_mean": 71.26143295889604,
+    "target_std": 70.07913017075217
+  },
+  "val_metrics_table": [
+    {
+      "horizon": "1h",
+      "horizon_hours": 1,
+      "mae": 10.8773,
+      "rmse": 19.9651,
+      "r2": 0.9204,
+      "mbe": -0.8633,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "3h",
+      "horizon_hours": 3,
+      "mae": 17.4431,
+      "rmse": 31.4234,
+      "r2": 0.8006,
+      "mbe": -0.8374,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "6h",
+      "horizon_hours": 6,
+      "mae": 25.1567,
+      "rmse": 42.9025,
+      "r2": 0.6231,
+      "mbe": 0.5524,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "12h",
+      "horizon_hours": 12,
+      "mae": 34.356,
+      "rmse": 56.3355,
+      "r2": 0.3388,
+      "mbe": 0.329,
+      "n_obs": 4870
+    },
+    {
+      "horizon": "24h",
+      "horizon_hours": 24,
+      "mae": 43.4162,
+      "rmse": 67.4836,
+      "r2": 0.0707,
+      "mbe": 2.8652,
+      "n_obs": 4870
+    }
+  ]
+}
