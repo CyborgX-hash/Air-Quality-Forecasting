@@ -218,3 +218,4 @@ All generated evaluation outputs are persisted in the repository:
    - To counteract peak underprediction during hazardous haze events, incorporate an asymmetric loss penalty (e.g. Pinball / Quantile Loss or weighted Huber loss penalizing underprediction more severely than overprediction).
 3. **Integration of Numerical Weather Predictions (NWP) for $H=24\text{h}$**:
    - At 24h, the lack of future meteorological forecasts forces the model to regress toward the seasonal mean. Feeding forecasted wind vectors and boundary layer height into future steps will dramatically reduce day-ahead error variance.
+

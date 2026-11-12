@@ -215,3 +215,4 @@ def test_visualization_generation(tmp_path):
     fig2_path = tmp_path / "test_error_dist.png"
     fig2 = plot_error_distribution(rec, horizons_to_plot=[1, 24], save_path=fig2_path)
     assert fig2_path.is_file() and fig2_path.stat().st_size > 1000
+
