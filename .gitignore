@@ -56,3 +56,6 @@ htmlcov/
 *.log
 scratch/
 tmp/
+
+# Phase 2 generated run directories (checkpoints, predictions, figures)
+experiments/phase2_runs/

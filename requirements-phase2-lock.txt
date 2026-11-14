@@ -1,0 +1,18 @@
+# Phase 2 verified dependency set (resolved 2026-11-14 on macOS arm64, Python 3.11.15).
+# Install: python3.11 -m venv .venv && .venv/bin/pip install -r requirements-phase2-lock.txt
+# requirements.txt keeps the permissive minimums; this file records what the Phase 2
+# integration tests were actually executed against.
+h5py==3.14.0
+joblib==1.6.0
+keras==3.15.1
+matplotlib==3.11.2
+numpy==2.4.6
+pandas==3.1.1
+protobuf==7.36.2
+pytest==9.2.0
+PyYAML==6.0.3
+scikit-learn==1.9.1
+scipy==1.17.1
+seaborn==0.13.2
+tabulate==0.10.0
+tensorflow==2.21.0

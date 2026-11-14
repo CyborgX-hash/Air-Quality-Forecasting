@@ -123,6 +123,29 @@ python experiments/run_experiments.py --all-stations
 
 ---
 
+## Phase 2: Integrated LSTM Pipeline
+
+Phase 2 adds station-isolated multi-horizon LSTM forecasting (1, 3, 6, 12, 24 h) on top of the Phase 1 data and metric code.
+One command runs the whole workflow (data → scaling → sequences → training → prediction → inverse scaling → evaluation → figures → report):
+
+```bash
+python -m src.phase2.run_pipeline --config configs/phase2_config.yaml
+```
+
+Stages can be run separately with `--stages` and `--run-id`. Everything is configured in `configs/phase2_config.yaml`, and each run writes to `experiments/phase2_runs/<run_id>/` (config snapshot, manifest with versions/seed/git commit/data hashes, scalers, checkpoints, history, predictions, evaluation tables, figures, `integrity_checks.json`, `report.md`).
+
+| Module | Owner | Role in the pipeline |
+|---|---|---|
+| `src/phase2/data_pipeline.py`, `scaling.py`, `config.py` | Saksham | cleaning, chronological split, train-only scaling |
+| `src/phase2/sequence_generator.py` | Ajit | multi-horizon windows and exclusion audit |
+| `src/phase2/lstm_model.py`, `train.py`, `predict.py`, `tune.py` | Harsh | model, training, prediction |
+| `src/phase2/evaluate.py`, `visualize.py` | Mihika | metrics, error analysis, figures |
+| `src/phase2/run_pipeline.py`, `experiment_manager.py`, `integrity.py` | Priyanshu | orchestration, reproducibility, quality gates |
+
+Details: [docs/phase2_design.md](docs/phase2_design.md) (module connections, interface contracts, integration findings) and
+[docs/phase2_execution_guide.md](docs/phase2_execution_guide.md) (requirements, commands, tests, reproducibility).
+Verified dependency versions: `requirements-phase2-lock.txt`. Integration tests: `python -m pytest tests/phase2`.
+
 ## Phase 1 Benchmark Results Summary (Aotizhongxin Station)
 
 ### Final Test Partition Performance (Untouched Test Period, N=4,920)
