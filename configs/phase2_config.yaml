@@ -26,7 +26,7 @@ stations:
   default: "Aotizhongxin"
 
 data:
-  raw_dir: "Data/Raw"
+  raw_dir: "data/raw"  # matches data/README.md (case matters on Linux)
   timestamp_column: "datetime"
   station_column: "station"
   target_column: "PM2.5"
@@ -130,4 +130,21 @@ tuning:
   early_stopping_patience: 5
   results_dir: "reports/results/phase2"
 
+# ------------------------------------------------------------------------------
+# Integration-level settings (read by src/phase2/experiment_manager.py; the
+# module-level Phase2Config ignores these sections).
+# ------------------------------------------------------------------------------
+experiment:
+  output_root: "experiments/phase2_runs"   # every run -> <output_root>/<run_id>/
+  run_name: "phase2"                       # run_id = <run_name>_<UTC time>_<config hash>
+  window_size: null                        # null -> lstm_windows.default_sequence_length
+  primary_station: null                    # null -> stations.default (used for example figures)
 
+evaluation:
+  partition: "test"                        # final reporting partition; never used for selection
+  batch_size: 64
+  prediction_atol: 0.0001                  # saved vs. re-computed prediction tolerance (ug/m3)
+
+reproducibility:
+  deterministic_ops: false                 # true -> tf.config.experimental.enable_op_determinism()
+  hash_raw_data: true                      # record SHA-256 of raw CSVs in manifest.json
